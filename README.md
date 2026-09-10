@@ -1,4 +1,4 @@
-# TryHackMe
+# TryHackMe-Labs
 
 A curated collection of selected TryHackMe rooms and exercises from my cybersecurity learning journey.
 
