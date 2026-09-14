@@ -6,7 +6,7 @@ This room introduce the SOC role in an organization or in an enterprise structur
 
 ## Security Hierarchy 
 
-Typical security organizations include: Executives, Security Leaderships, Security Managers, and Technical level employer.
+Typical security organizations include: Executives, Security Leaderships, Security Managers, and Technical level employees/roles.
 
 - Executives - Chief Executive Officer (CEO)
 - Security Leaderships - Chief Technological Officer (CTO), Chief Information Officer (CIO), and Chief Information Security Officer   (CISO)
@@ -23,11 +23,11 @@ Not all companies have a "security departments". For small companies, the IT dep
 
 ## Meet the Blue Team
 
-Blue Team is about defensive security and the people on the blue team monitor attacks constantly, and they try to respond them quickly. And here are the most common Blue Team departments:
+Blue Team is about defensive security and the people on the blue team monitor attacks constantly, and they try to respond to them quickly. And here are the most common Blue Team departments:
 
 ### Security Operations Center (SOC)
 
-An SOC department is composed of following roles:
+A SOC department is composed of following roles:
 
 - L1 analysts
 - L2 analysts
@@ -36,15 +36,13 @@ An SOC department is composed of following roles:
 
 ### Cyber Incident Response Team (CIRT)
 
-These are like "firefighters". If the SOC team couldn't handle and incident goes out of control, you call them. They are also called CSIRT or CERT. Here are the famous examples of CIRT:
+These are like "firefighters". If the SOC team couldn't handle and the incident goes out of control, you call them. They are also called CSIRT or CERT. Here are the famous examples of CIRT:
 
 - JPCERT
 - Mandiant
 - AWS CIRT
 
-### Specialized Defensive Roles
-
-Roles supporting the Blue Team:
+### Roles supporting the Blue Team:
 
 - DevSecOps
 - Penetration Tester
