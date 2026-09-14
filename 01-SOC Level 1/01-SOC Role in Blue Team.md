@@ -77,3 +77,33 @@ Alternatively, an organization can use a Managed Security Services Provider (MSS
 Working for an MSSP can also expose analysts to different environments and a wide range of security incidents, although the work can be fast-paced because analysts may be responsible for multiple customers.
 
 ## Final Challenge
+
+The final challenge required assigning different security incidents and tasks to the appropriate security roles.
+
+### Roles
+
+- **Susan** — SOC L2 Analyst
+- **Nick** — GRC Auditor
+- **Lucas** — SOC L1 Analyst
+- **Eugen** — SOC Engineer
+- **Robert** — CERT Lead
+- **Ben** — Penetration Tester
+- **Alice** — Threat Researcher
+
+### My Attempt
+
+I had difficulty with this challenge when I originally completed the room and needed multiple attempts before getting the assignments right.
+
+When revisiting the room for this portfolio, I was able to complete the challenge correctly on my first attempt. I approached it mainly by matching each task to the role whose responsibilities were the most obvious:
+
+| Order | Task | Role |
+|---|---|---|
+| 1 | Servers storing credit card information require a PCI DSS audit | **Nick — GRC Auditor** |
+| 2 | The office in France was hit with ransomware and immediate response was required | **Robert — CERT Lead** |
+| 3 | SIEM created an alert about brute-force activity against FW-NY-01 | **Lucas — SOC L1 Analyst** |
+| 4 | The SIEM is unavailable because of a storage limit | **Eugen — SOC Engineer** |
+| 5 | Check the new version of tryhackme.thm for vulnerabilities | **Ben — Penetration Tester** |
+| 6 | FIN7 is actively targeting the company and their tactics need to be analyzed | **Alice — Threat Researcher** |
+| 7 | HR manager Anna launched phishing malware and a deep analysis is required | **Susan — SOC L2 Analyst** |
+
+The phishing malware investigation was the one I initially overlooked. I did not immediately associate it with the SOC L2 role and instead eliminated the other obvious choices first. Since the remaining role was the L2 analyst, it became clear that deeper analysis of a phishing/malware incident can also fall under L2 responsibilities.
