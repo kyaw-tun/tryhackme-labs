@@ -9,7 +9,7 @@ This room introduce the SOC role in an organization or in an enterprise structur
 Typical security organizations include: Executives, Security Leaderships, Security Managers, and Technical level employer.
 
 - Executives - Chief Executive Officer (CEO)
-- Security Leaderships - Chief Technological Officer (CTO), CIO (need long form), and Chief Information Security Officer   (CISO)
+- Security Leaderships - Chief Technological Officer (CTO), Chief Information Officer (CIO), and Chief Information Security Officer   (CISO)
 - Security Managers - Security Managers, Team Lead
 - Technical - Analyst, Engineer, Red Teamer
 
