@@ -13,7 +13,6 @@ The repository is organized by learning path and area rather than by completion 
 | Area | Description |
 | --- | --- |
 | SOC Level 1 | Selected rooms covering security operations and defensive security |
-| SOC Level 2 | Selected rooms covering more advanced SOC concepts and investigations |
 | Jr Penetration Tester | Selected rooms covering penetration-testing concepts and techniques |
 | CTF Rooms | Selected CTF-style rooms and challenges |
 | Hacker Holidays Challenge | Selected exercises from the Hacker Holidays challenges |
