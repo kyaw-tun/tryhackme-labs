@@ -29,11 +29,11 @@ The objective was to identify all of the true-positive alerts based on the evide
 
 - Content:
 
-```email
+```text
 Hi Ms. Garcia,\n\nWelcome to TheTryDaily!\n\nAs part of your onboarding, please complete your final profile setup so we can configure your access.\n\nKindly please click the link below:\n\n<a href="https://hrconnex.thm/onboarding/15400654060/j.garcia">Set Up My Profile</a>.\n\nIf you have questions, please reach out to the HR Onboarding Team.
 ```
 
-## Analysis
+### Analysis
 
 At first glance, this alert could look suspicious simply because it contains an external link. However, looking at the actual content, there were no obvious phishing indicators.
 
@@ -55,11 +55,11 @@ This was a good reminder that an alert being triggered does not automatically me
 
 - Content:
 
-```email
+```text
 Dear Customer,\n\nWe were unable to deliver your package due to an incomplete address.\n\nPlease confirm your shipping information by clicking the link below:\n\n`http://bit.ly/3sHkX3da12340`\n\nIf we don’t hear from you within 48 hours, your package will be returned to sender.\n\nThank you,\n\nAmazon Delivery
 ```
 
-## Analysis
+### Analysis
 
 This alert contained several indicators that made the email suspicious.
 
@@ -91,7 +91,7 @@ Classification: True Positive
 
 - URL: `http://bit.ly/3sHkX3da12340`
 
-## Analysis
+### Analysis
 
 This alert was particularly interesting because it connected to the same URL seen in the previous phishing alert.
 
@@ -115,11 +115,11 @@ Classification: True Positive
 
 - content:
 
-```email
+```text
 Hi C.Allen,\n\nWe detected an unusual sign-in attempt on your Microsoft account.\n\nLocation: Lagos, Nigeria\n\nIP Address: 102.89.222.143\n\nDate: 2025-01-24 06:42\n\nIf this was not you, please secure your account immediately to avoid unauthorized access.\n\n<a href="https://m1crosoftsupport.co/login">Review Activity</a>\n\nThank you,\n\nMicrosoft Account Security Team
 ```
 
-## Analysis
+### Analysis
 
 This email contained several strong phishing indicators.
 
@@ -141,11 +141,11 @@ Classification: True Positive
 
 - content: 
 
-```email
+```text
 Hi Ms. Garcia,\n\nWelcome to TheTryDaily!\n\nAs part of your onboarding, please complete your final profile setup so we can configure your access.\n\nKindly click the link below:\n\n<a href="https://hrconnex.thm/onboarding/15400654060/j.garcia">Set Up My Profile</a>.\n\nIf you have questions, please reach out to the HR Onboarding Team.
 ```
 
-## Analysis
+### Analysis
 
 I did not independently reach this alert during my original run of the scenario. The scenario ended after I successfully identified the three required true-positive alerts.
 
