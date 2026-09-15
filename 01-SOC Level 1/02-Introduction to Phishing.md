@@ -1,67 +1,174 @@
 # Introduction to Phishing
 
-## Introduction to the room, (like a real world scenario style)
+## Overview
+
+This was a scenario-based SOC exercise rather than a traditional walkthrough or CTF.
+
+Instead of following a set of instructions to exploit a machine, I was given a series of security alerts and had to determine whether they were true positives or false positives.
+
+The objective was to identify all of the true-positive alerts based on the evidence provided.
 
 ## Objective
 
-The objective of this room was to identify all the true positive alerts.
+- Review the alerts presented during the scenario.
 
-## Scenario 
+- Distinguish true positives from legitimate activity.
 
-### Alert 1 - Inbound Email Containing Suspicious External Link 
+- Explain the reasoning behind each classification.
+
+
+## Alert Triage 
+
+## Alert 1 - Inbound Email Containing Suspicious External Link 
 
 - Severity: Medium
-- Description: This alert was triggered by an inbound email contains one or more external links due to potentially suspicious characteristics. As part of the investigation, check firewall or proxy logs to determine whether any endpoints have attempted to access the URLs in the email and whether those connections were allowed or blocked.
-- sender: onboarding@hrconnex.thm
-- recipient: j.garcia@thetrydaily.thm
-- content: Hi Ms. Garcia,\n\nWelcome to TheTryDaily!\n\nAs part of your onboarding, please complete your final profile setup so we can configure your access.\n\nKindly please click the link below:\n\n<a href="https://hrconnex.thm/onboarding/15400654060/j.garcia">Set Up My Profile</a>.\n\nIf you have questions, please reach out to the HR Onboarding Team.
 
-This actually looks like a normal onboarding email. And there is no suspicious signs to this email. So, it is identified as a false positive.
+- sender: `onboarding@hrconnex.thm`
 
-### Alert 2 - Inbound Email Containing Suspicious External Link 
+- recipient: `j.garcia@thetrydaily.thm`
+
+- Content:
+
+```email
+Hi Ms. Garcia,\n\nWelcome to TheTryDaily!\n\nAs part of your onboarding, please complete your final profile setup so we can configure your access.\n\nKindly please click the link below:\n\n<a href="https://hrconnex.thm/onboarding/15400654060/j.garcia">Set Up My Profile</a>.\n\nIf you have questions, please reach out to the HR Onboarding Team.
+```
+
+## Analysis
+
+At first glance, this alert could look suspicious simply because it contains an external link. However, looking at the actual content, there were no obvious phishing indicators.
+
+The email was related to employee onboarding, the sender appeared to belong to the same organization, and the request itself was reasonable for a new employee.
+
+There was also no obvious urgency, threat, impersonation, or suspicious-looking destination.
+
+Classification: False Positive
+
+This was a good reminder that an alert being triggered does not automatically mean that malicious activity has occurred. The alert still needs to be investigated and judged based on the available evidence.
+
+## Alert 2 - Inbound Email Containing Suspicious External Link 
 
 - Severity: Medium 
-- Description: This alert was triggered by an inbound email contains one or more external links due to potentially suspicious characteristics. As part of the investigation, check firewall or proxy logs to determine whether any endpoints have attempted to access the URLs in the email and whether those connections were allowed or blocked.
-- sender: urgents@amazon.biz
-- recipient: h.harris@thetrydaily.thm
-- content: Dear Customer,\n\nWe were unable to deliver your package due to an incomplete address.\n\nPlease confirm your shipping information by clicking the link below:\n\nhttp://bit.ly/3sHkX3da12340\n\nIf we don’t hear from you within 48 hours, your package will be returned to sender.\n\nThank you,\n\nAmazon Delivery
 
-The content of the email looks very suspicious because on the first point, they are asking for the shipping information that should be given to them by amazon if they are legitimate. On the second point, they are asking the recipient to give the information on a suspicious looking website, not the actual amazon website. And the tone and the words sound very urgent which is a common phishing tactics. And the sender's email look suspicious too. So, it is identified as true positive.
+- sender: `urgents@amazon.biz`
 
-### Alert 3 - Access to Blacklisted External URL Blocked by Firewall
+- recipient: `h.harris@thetrydaily.thm`
+
+- Content:
+
+```email
+Dear Customer,\n\nWe were unable to deliver your package due to an incomplete address.\n\nPlease confirm your shipping information by clicking the link below:\n\n`http://bit.ly/3sHkX3da12340`\n\nIf we don’t hear from you within 48 hours, your package will be returned to sender.\n\nThank you,\n\nAmazon Delivery
+```
+
+## Analysis
+
+This alert contained several indicators that made the email suspicious.
+
+First, the sender address did not look like an official Amazon address. The email also used a shortened URL rather than directing the recipient to Amazon's legitimate website.
+
+The message was asking the recipient to provide or confirm shipping information through that link. It also used urgency by giving the recipient only 48 hours before the package would supposedly be returned.
+
+These are common characteristics of phishing emails:
+
+- Suspicious sender address
+
+- Link that does not clearly lead to the legitimate organization
+
+- Request for information
+
+- Urgency and time pressure
+
+- Impersonation of a trusted organization
+
+Classification: True Positive
+
+## Alert 3 - Access to Blacklisted External URL Blocked by Firewall
 
 - Severity: High
-- Description: This alert was triggered when a user attempted to access an external URL that is listed in the organization's blacklist or threat intelligence feeds. The firewall or proxy successfully blocked the outbound request, preventing the connection. Note: The blacklist only covers known threats. It does not guarantee protection against new or unknown malicious domains.
-- SourceIP: 10.20.2.17
-- DestinationIP: 67.199.248.11
-- URL: http://bit.ly/3sHkX3da12340
 
-This alert is true positive because an ip from within the firewall accessed to a blacklisted external URL. This activity is suspicious and it might mean an attacker get inside the firewall or a person or a device inside the firewall is contacting to that external URL. Therefore, it is identified as true positive.
+- SourceIP: `10.20.2.17`
 
-### Alert 4 - Inbound Email Containing Suspicious External Link 
+- DestinationIP: `67.199.248.11`
+
+- URL: `http://bit.ly/3sHkX3da12340`
+
+## Analysis
+
+This alert was particularly interesting because it connected to the same URL seen in the previous phishing alert.
+
+An internal host attempted to access an external URL that was already listed in the organization's blacklist or threat-intelligence feeds. The firewall successfully blocked the request.
+
+The fact that the firewall blocked the connection does not make the event harmless. The important point is that an internal system attempted to communicate with a destination that was already known to be suspicious.
+
+This could indicate that someone inside the organization interacted with the phishing email, or that a device had some other reason for attempting to reach the malicious destination.
+
+The alert therefore warranted investigation.
+
+Classification: True Positive
+
+## Alert 4 - Inbound Email Containing Suspicious External Link 
 
 - Severity: Medium
-- Description: This alert was triggered by an inbound email contains one or more external links due to potentially suspicious characteristics. As part of the investigation, check firewall or proxy logs to determine whether any endpoints have attempted to access the URLs in the email and whether those connections were allowed or blocked.
-- Sender: no-reply@m1crosoftsupport.co
-- recipient: c.allen@thetrydaily.thm
-- content: Hi C.Allen,\n\nWe detected an unusual sign-in attempt on your Microsoft account.\n\nLocation: Lagos, Nigeria\n\nIP Address: 102.89.222.143\n\nDate: 2025-01-24 06:42\n\nIf this was not you, please secure your account immediately to avoid unauthorized access.\n\n<a href="https://m1crosoftsupport.co/login">Review Activity</a>\n\nThank you,\n\nMicrosoft Account Security Team
 
-The content in the email seems suspicious and it matches several phishing email characteristics. First, the sender's email address is not a real "microsoft" email. It just looks like one. Second, the login URL they send looks fake too, same "m1crosoft". And then they are urging the recipient to act quickly which is a common phishing tactic. Therefore, it is identified as true positive.
+- Sender: `no-reply@m1crosoftsupport.co`
 
-### Alert 5 - Inbound Email Containing Suspicious External Link 
+- recipient: `c.allen@thetrydaily.thm`
+
+- content:
+
+```email
+Hi C.Allen,\n\nWe detected an unusual sign-in attempt on your Microsoft account.\n\nLocation: Lagos, Nigeria\n\nIP Address: 102.89.222.143\n\nDate: 2025-01-24 06:42\n\nIf this was not you, please secure your account immediately to avoid unauthorized access.\n\n<a href="https://m1crosoftsupport.co/login">Review Activity</a>\n\nThank you,\n\nMicrosoft Account Security Team
+```
+
+## Analysis
+
+This email contained several strong phishing indicators.
+
+The sender address was designed to look like Microsoft, but used `m1crosoft` instead of `microsoft`. The same technique appeared in the link destination.
+
+The message also claimed that there had been an unusual login attempt and encouraged the recipient to act immediately. This combination of account-security impersonation and urgency is a common phishing technique.
+
+The email was therefore suspicious even before considering the destination of the link.
+
+Classification: True Positive
+
+## Alert 5 - Inbound Email Containing Suspicious External Link 
 
 - Severity: Medium
-- Description: This alert was triggered by an inbound email contains one or more external links due to potentially suspicious characteristics. As part of the investigation, check firewall or proxy logs to determine whether any endpoints have attempted to access the URLs in the email and whether those connections were allowed or blocked.
-- sender: onboarding@hrconnex.thm
-- recipient: j.garcia@thetrydaily.thm
-- content: Hi Ms. Garcia,\n\nWelcome to TheTryDaily!\n\nAs part of your onboarding, please complete your final profile setup so we can configure your access.\n\nKindly click the link below:\n\n<a href="https://hrconnex.thm/onboarding/15400654060/j.garcia">Set Up My Profile</a>.\n\nIf you have questions, please reach out to the HR Onboarding Team.
 
-This one, I did not get to do because the scenario only tells us to successfully identify all true positives and the scenario existed after getting the three true positives. And from what it seems, it looks exactly like the first alert. So, it is a normal onboarding email from an organization and is identified as false positive.
+- sender: `onboarding@hrconnex.thm`
+
+- recipient: `j.garcia@thetrydaily.thm`
+
+- content: 
+
+```email
+Hi Ms. Garcia,\n\nWelcome to TheTryDaily!\n\nAs part of your onboarding, please complete your final profile setup so we can configure your access.\n\nKindly click the link below:\n\n<a href="https://hrconnex.thm/onboarding/15400654060/j.garcia">Set Up My Profile</a>.\n\nIf you have questions, please reach out to the HR Onboarding Team.
+```
+
+## Analysis
+
+I did not independently reach this alert during my original run of the scenario. The scenario ended after I successfully identified the three required true-positive alerts.
+
+I later booted up the scenario again to check Alert 5. It is the same alert as Alert 1, with the same details, so I classified it as a false positive.
+
+Classification: False Positive
 
 ## Conclusion
 
-I first started the SOC Level 1 path roughly 120 days ago (May 2026). When I previously encountered this type of alert-triage exercise, I struggled to confidently identify the true-positive alerts. Even when I made a correct classification, I wasn't confident that my reasoning was correct.
+When looking at these alerts, I mainly focused on the sender, the links, the context of the email, and whether there were any signs of urgency or impersonation. I also learned that just because an alert looks suspicious doesn't mean it's a true positive. I still need to look at the whole thing before making a decision.
 
-Revisiting the scenario today was a different experience. I was able to assess each alert independently, identify the initial alert as a false positive, and subsequently identify all three true-positive alerts as they appeared. I did not receive immediate confirmation after each decision; the final result was provided only after the scenario concluded.
+I first started the SOC Level 1 path roughly 120 days ago. When I did this room back then, I didn't get all the answers right and wasn't always sure why an alert was a true or false positive.
 
-Although this was a relatively simple scenario, the improvement in my confidence and ability to interpret the evidence was more meaningful to me than the difficulty of the exercise itself. It showed me that the concepts I've been studying over the past several months are becoming easier to apply during an investigation.
+Today, I went through the same scenario again and got all of them right. More importantly, I felt much more confident about why I was making each decision.
+
+It's a simple thing, but it was nice to see that I can now recognize things that I struggled with when I first started.
+
+### Key Takeaways
+
+- Don't assume every alert is malicious.
+
+- Look at the sender, links, and context together.
+
+- Understand why an alert is a true or false positive before making a decision.
+
+- Practice makes these decisions easier over time.
