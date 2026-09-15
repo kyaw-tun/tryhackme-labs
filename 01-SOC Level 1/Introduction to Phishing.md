@@ -60,7 +60,7 @@ This one, I did not get to do because the scenario only tells us to successfully
 
 ## Conclusion
 
-I first started the SOC Level 1 path roughly 120 days ago. When I previously encountered this type of alert-triage exercise, I struggled to confidently identify the true-positive alerts. Even when I made a correct classification, I wasn't confident that my reasoning was correct.
+I first started the SOC Level 1 path roughly 120 days ago (May 2026). When I previously encountered this type of alert-triage exercise, I struggled to confidently identify the true-positive alerts. Even when I made a correct classification, I wasn't confident that my reasoning was correct.
 
 Revisiting the scenario today was a different experience. I was able to assess each alert independently, identify the initial alert as a false positive, and subsequently identify all three true-positive alerts as they appeared. I did not receive immediate confirmation after each decision; the final result was provided only after the scenario concluded.
 
