@@ -74,7 +74,7 @@ The data collected by the EDR agents to send to the EDR console is called EDR te
 - MITRE ATT&CK Mapping - Any activity flagged by EDR is also mapped with the MITRE ATT&CK's tactics and techniques. 
 - Machine Learning - Modern EDRs have machine learning models trained by a large dataset of normal and malicious behaviors and can detect complex patterns of attacks.
 
-### Response
+### Response (They are self-explanatory)
 
 - Host isolation
 - Process termination
