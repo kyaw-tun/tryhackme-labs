@@ -40,16 +40,6 @@ After detecting the anomalies, and deviation from normal, it can give the analys
 
 The course gives the Airport example for this task. Traditional Antivirus is like an Immigration check point. It can only detect known criminals on their database, whereas EDR is like security officers and CCTV cameras, they can detect unusual behavior of certain individuals at the airport, and detect if someone is wandering around restricted areas. Or someone is leaving their bags unattended.
 
-And there were some scenario based steps, and then comparing each step on AV (antivirus) vs EDR, what each of them will do on each step. And it was described in the table. But i don't really think it's necessary for this.
-
-(You can remove the table)
-| Capability | Antivirus | EDR |
-|---|---|---|
-| Signature detection | ✓ | ✓ |
-| Behavioral visibility | Limited | ✓ |
-| Process trees | ... | ... |
-| Response actions | ... | ... |
-
 ## 3. How EDR Works
 
 ### EDR Agent
@@ -58,7 +48,7 @@ For multiple endpoints, there are EDR Agents deployed inside them. And these age
 
 ### EDR Console
 
-I don't really know what to say about EDR console. What it does is it collects data from the agents and then those data is matched with the threat intelligence and then connects the dots. And these dots form a detection which is an alert.
+I don't really know what to say about EDR console. What it does is, it collects data from the agents and then those data is matched with the threat intelligence and then connects the dots. And these dots form a detection which is an alert.
 
 After detection, analyst can acknowledge the alerts and prioritize them. And EDR itself can help and prioritizing them as they can sort the alerts by severity (critical, high, medium, low, informational).
 
@@ -78,9 +68,9 @@ The data collected by the EDR agents to send to the EDR console is called EDR te
 
 ### Detection
 
-- Behavioral Detection - Detecting behavior of a file (e.g. a Microsoft word process winword.exe spawning a powershell.exe, that's an unusual behavior)
+- Behavioral Detection - Detecting behavior of a file (e.g. a Microsoft word process `winword.exe` spawning a `powershell.exe`, that's an unusual behavior)
 - Anomaly Detection - Deviation from the baseline behavior is an anomaly
-- IOC Matching - Detection of any flag that matches known IOC signatures. (and also, IOC = Indicator of compromise, the room didn't give the long form)  
+- IOC Matching - Detection of any flag that matches known IOC signatures. (and also, IOC = Indicator of compromise)  
 - MITRE ATT&CK Mapping - Any activity flagged by EDR is also mapped with the MITRE ATT&CK's tactics and techniques. 
 - Machine Learning - Modern EDRs have machine learning models trained by a large dataset of normal and malicious behaviors and can detect complex patterns of attacks.
 
@@ -100,9 +90,9 @@ The data collected by the EDR agents to send to the EDR console is called EDR te
 
 ### Investigation Notes
 
-**Host:** ...
-**Suspicious process:** ...
-**Downloaded payload:** ...
-**Network activity:** ...
+- **Host:** ...
+- **Suspicious process:** ...
+- **Downloaded payload:** ...
+- **Network activity:** ...
 
 ## To Conclude
