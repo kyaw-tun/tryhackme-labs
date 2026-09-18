@@ -2,7 +2,7 @@
 
 ## Introduction
 
-TryHackMe Room: (SOC Role in Blue Team)[https://tryhackme.com/room/socroleinblueteam]
+TryHackMe Room: [SOC Role in Blue Team](https://tryhackme.com/room/socroleinblueteam)
 
 This is my understanding of the room and the key concepts I took away from it.
 
