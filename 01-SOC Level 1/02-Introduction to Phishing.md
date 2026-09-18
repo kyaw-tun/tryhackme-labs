@@ -1,5 +1,9 @@
 # Introduction to Phishing
 
+TryHackMe Room: [Introduction to Phishing](https://tryhackme.com/soc-sim/scenarios?scenario=introduction-to-phishing)
+
+This write-up covers my understanding of the room and the key concepts I took away from the scenario.
+
 ## Overview
 
 This was a scenario-based SOC exercise rather than a traditional walkthrough or CTF.
