@@ -1,7 +1,8 @@
 # Introduction to EDR
 
-> TryHackMe — SOC Level 1
-> Room: Introduction to EDR
+TryHackMe Room: [Introduction to EDR](https://tryhackme.com/room/introductiontoedrs)
+
+This write-up covers my understanding of the room and the key concepts I took away from it.
 
 ## Overview
 
