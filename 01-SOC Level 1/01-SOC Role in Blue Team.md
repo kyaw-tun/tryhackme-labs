@@ -2,6 +2,10 @@
 
 ## Introduction
 
+TryHackMe Room: (SOC Role in Blue Team)[https://tryhackme.com/room/socroleinblueteam]
+
+This is my understanding of the room and the key concepts I took away from it.
+
 This room introduces the role of a Security Operations Center (SOC) within an organization or enterprise structure.
 
 Most of the concepts in this room were already familiar to me from my previous cybersecurity studies. However, I included it in my portfolio because the final challenge exposed a gap in my understanding of how specific security tasks are divided between different roles.
