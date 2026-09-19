@@ -8,6 +8,16 @@ Each framework looks at an attack from a different perspective. The Pyramid of P
 
 This write-up focuses on what I understood from completing the rooms and how I see these frameworks fitting into a broader defensive security approach.
 
+## TryHackMe Rooms:
+
+- [Pyramid of Pain](https://tryhackme.com/room/pyramidofpainax)
+    
+- [Cyber Kill Chain](https://tryhackme.com/room/cyberkillchainzmt)
+
+- [Unified Kill Chain](https://tryhackme.com/room/unifiedkillchain) 
+
+This write-up covers my understanding of these three rooms and the key concepts I took away from them.
+
 ## Pyramid of Pain
 
 Pyramid of Pain is, as per my understanding, the level of pain it would cause an attacker to change their approach when their advances are detected. They are classified by different levels and colors, which makes it easier to identify how difficult it would be for an attacker to change each part.
