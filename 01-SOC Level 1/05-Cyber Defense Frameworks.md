@@ -1,283 +1,75 @@
 # Cyber Defense Frameworks
 
-> TryHackMe — SOC Level 1
-> Rooms:
-> - Pyramid of Pain
-> - Cyber Kill Chain
-> - Unified Kill Chain
+## Introduction
 
-## Overview
+This is a collection of my understanding of the rooms Pyramid of Pain, Cyber Kill Chain, and Unified Kill Chain from TryHackMe platform. I combined all three of them because the tasks there are straight forward but the steps to each of these methods are essential to detect a cyber attack.
 
-Brief introduction to why cybersecurity frameworks are useful
-for understanding, detecting, and disrupting adversary activity.
+## Pyramid of Pain
 
----
+Pyramid of Pain is, as per my understanding, the level of pain it would have to the attackers to change when their advances are detected. And they are classified by levels and colors so that it would be easier to identify. 
 
-# 1. Pyramid of Pain
+Here are the levels:
 
-## What is the Pyramid of Pain?
+### Hash Values - Trivial (Blue)
 
-...
+These are the easiest to change if they are detected because hash values of malicious files change if you change a little bit of the file. And you can do that easily. Like adding a hash file attached to the file. Or changing the variable of a code. 
 
-## The Six Levels
+### IP Addresses - Easy (Green)
 
-### Hash Values
+These are pretty easy to change too. There are several tools and ways you can change the public ip addresses.
 
-...
+### Domain Names - Simple (Teal)
 
-### IP Addresses
+If the domain name is detected, you can buy another domain. Which sound simple if you have the means, but it is much more painful than changing IP addresses or hash values. 
 
-...
+### Network/Host Artifacts - Annoying (Yellow)
 
-### Domain Names
+At this stage, if detected, the attacker will feel more annoyed and frustrated, because they would have to change their methodology, and tools, and artifacts.
 
-...
+### Tools - challenging (Yellow)
 
-### Network / Host Artifacts
+This stage is similar to Network/Host Artifacts stage. And the color that represents both stages are same too. At this stage, if detected, the attacker might have to write a different tool, or even change the target.
 
-...
+### Tactics, Techniques and Procedures (TTPs) - hardest (Red)
 
-### Tools
+This is the hardest to change if detected. The attacker would be left with two choices, go back and learn more ways to not get detected, or give up and change the target. 
 
-...
+The structure is constructed in a way of a pyramid because the higher you detect in the pyramid, the more difficult it generally is for an attacker to change their behavior. (I might need to add some words here).
 
-### Tactics, Techniques & Procedures (TTPs)
+## Cyber Kill Chain
 
-...
-
-## From Easy to Difficult
-
-| Level | Indicator | Difficulty for Attacker |
-|---|---|---|
-| 1 | Hash Values | ... |
-| 2 | IP Addresses | ... |
-| 3 | Domain Names | ... |
-| 4 | Network/Host Artifacts | ... |
-| 5 | Tools | ... |
-| 6 | TTPs | ... |
-
-## Why the Pyramid Matters to Defenders
-
-...
-
-## My Takeaways
-
-- ...
-- ...
-- ...
-
----
-
-# 2. Cyber Kill Chain
-
-## What is the Cyber Kill Chain?
-
-...
-
-## The Seven Stages
-
-### 1. Reconnaissance
-
-...
-
-### 2. Weaponization
-
-...
-
-### 3. Delivery
-
-...
-
-### 4. Exploitation
-
-...
-
-### 5. Installation
-
-...
-
-### 6. Command & Control
-
-...
-
-### 7. Actions on Objectives
-
-...
-
-## Attack Flow
-
-```text
-Reconnaissance
-      ↓
-Weaponization
-      ↓
-Delivery
-      ↓
-Exploitation
-      ↓
-Installation
-      ↓
-Command & Control
-      ↓
-Actions on Objectives
-```
-
-## Defensive Perspective
-
-| Stage | What the Attacker Does | Possible Defensive Opportunities |
-|---|---|---|
-| Reconnaissance | ... | ... |
-| Weaponization | ... | ... |
-| Delivery | ... | ... |
-| Exploitation | ... | ... |
-| Installation | ... | ... |
-| Command & Control | ... | ... |
-| Actions on Objectives | ... | ... |
-
-## Limitations
-
-...
-
-## My Takeaways
-
-- ...
-- ...
-- ...
-
----
-
-# 3. Unified Kill Chain
-
-## What is the Unified Kill Chain?
-
-...
-
-## Why Was It Created?
-
-...
-
-## The Three Goals
-
-### In — Initial Foothold
-
-...
-
-### Through — Network Propagation
-
-...
-
-### Out — Action on Objectives
-
-...
-
-## The 18 Phases
-
-### In — Initial Foothold
+The seven stages:
 
 1. Reconnaissance
 2. Weaponization
-3. Social Engineering
+3. Delivery
 4. Exploitation
-5. Persistence
-6. Defence Evasion
-7. Command & Control
-8. Pivoting
+5. Installation
+6. Command & Control
+7. Actions on Objectives
 
-### Through — Network Propagation
+Short explanation of how defenders can use the stages to understand where an attack is occurring and where it can potentially be disrupted.
 
-9. Discovery
-10. Privilege Escalation
-11. Execution
-12. Credential Access
-13. Lateral Movement
+## Unified Kill Chain
 
-### Out — Action on Objectives
+Brief explanation of why the Unified Kill Chain exists and how it expands the traditional Kill Chain into a more detailed model.
 
-14. Collection
-15. Exfiltration
-16. Impact
-17. Objectives
+[List the 18 phases here, without explaining every phase.]
 
-> Note: The room groups the phases into three overarching
-> goals for learning purposes. The Unified Kill Chain
-> contains 18 phases.
+## Comparing the Frameworks
 
-## Why the Unified Kill Chain?
+| Framework | Main Purpose |
+|---|---|
+| Pyramid of Pain | Understand the value of different indicators and detection levels |
+| Cyber Kill Chain | Describe an attack as a sequence of stages |
+| Unified Kill Chain | Provide a more detailed model of adversary activity |
 
-...
+## My Experience
 
-## Unified Kill Chain vs Cyber Kill Chain
+I was already familiar with many of these concepts from my previous cybersecurity studies. When completing these rooms, I relied heavily on pattern recognition and knowledge accumulated from studying networking, security concepts, and attack techniques.
 
-| | Cyber Kill Chain | Unified Kill Chain |
-|---|---|---|
-| Number of phases | 7 | 18 |
-| Focus | ... | ... |
-| Internal movement | ... | ... |
-| Post-exploitation | ... | ... |
-| Relationship | ... | ... |
-
-## My Takeaways
-
-- ...
-- ...
-- ...
-
----
-
-# 4. Putting the Frameworks Together
-
-## How They Complement Each Other
-
-### Pyramid of Pain
-
-**Question:** How difficult is it for an attacker to change?
-
-...
-
-### Cyber Kill Chain
-
-**Question:** Where are we in the attack?
-
-...
-
-### Unified Kill Chain
-
-**Question:** What is the broader attack lifecycle and
-how does the attacker move through the environment?
-
-...
-
-## Example
-
-```text
-Attacker
-   │
-   ├── Reconnaissance
-   │
-   ├── Delivery
-   │
-   ├── Exploitation
-   │
-   ├── Persistence
-   │
-   ├── Privilege Escalation
-   │
-   ├── Lateral Movement
-   │
-   └── Actions on Objectives
-             │
-             ▼
-       Defensive Detection
-             │
-             ▼
-      Indicators / TTPs
-             │
-             ▼
-       Pyramid of Pain
-```
+The main value of these rooms for me was putting these concepts into established defensive frameworks rather than learning each concept individually.
 
 ## Conclusion
 
-- ...
-- ...
-- ...
+These frameworks provide different perspectives on the same problem: understanding adversary activity and identifying opportunities for detection and disruption.
