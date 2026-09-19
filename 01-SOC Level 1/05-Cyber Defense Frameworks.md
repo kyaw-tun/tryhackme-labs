@@ -2,7 +2,11 @@
 
 ## Introduction
 
-This is a collection of my understanding of the rooms Pyramid of Pain, Cyber Kill Chain, and Unified Kill Chain from TryHackMe platform. I combined all three of them because the tasks there are straight forward but the steps to each of these methods are essential to detect a cyber attack.
+This is a collection of my understanding of the Pyramid of Pain, Cyber Kill Chain, and Unified Kill Chain rooms from the TryHackMe platform. I combined all three of them because, while the tasks in these rooms are fairly straightforward, the concepts and steps behind each framework are important for understanding how cyber attacks can be detected and disrupted.
+
+Each framework looks at an attack from a different perspective. The Pyramid of Pain focuses on how difficult different indicators are for an attacker to change, while the Cyber Kill Chain and Unified Kill Chain provide different ways of looking at the stages and activities involved in an attack.
+
+This write-up focuses on what I understood from completing the rooms and how I see these frameworks fitting into a broader defensive security approach.
 
 ## Pyramid of Pain
 
@@ -12,7 +16,7 @@ Here are the levels:
 
 ### Hash Values - Trivial (Blue)
 
-These are the easiest to change if they are detected because the hash value of a malicious file changes if you modify the file even slightly. This can be done quite easily, such as by adding something to the file or changing a variable in the code.
+These are the easiest to change if they are detected because the hash value of a malicious file changes if you modify the file even slightly. For example, if there is a malicious `.exe` file and you append some extra data to it, such as a text file or other content, the hash value of the `.exe` will be completely different even though the actual functionality of the file might not have changed. This makes hash values very easy for an attacker to change.
 
 ### IP Addresses - Easy (Green)
 
