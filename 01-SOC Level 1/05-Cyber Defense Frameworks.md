@@ -6,35 +6,35 @@ This is a collection of my understanding of the rooms Pyramid of Pain, Cyber Kil
 
 ## Pyramid of Pain
 
-Pyramid of Pain is, as per my understanding, the level of pain it would have to the attackers to change when their advances are detected. And they are classified by levels and colors so that it would be easier to identify. 
+Pyramid of Pain is, as per my understanding, the level of pain it would cause an attacker to change their approach when their advances are detected. They are classified by different levels and colors, which makes it easier to identify how difficult it would be for an attacker to change each part.
 
 Here are the levels:
 
 ### Hash Values - Trivial (Blue)
 
-These are the easiest to change if they are detected because hash values of malicious files change if you change a little bit of the file. And you can do that easily. Like adding a hash file attached to the file. Or changing the variable of a code. 
+These are the easiest to change if they are detected because the hash value of a malicious file changes if you modify the file even slightly. This can be done quite easily, such as by adding something to the file or changing a variable in the code.
 
 ### IP Addresses - Easy (Green)
 
-These are pretty easy to change too. There are several tools and ways you can change the public ip addresses.
+These are pretty easy to change too. There are several tools and ways an attacker can change or use different public IP addresses, making this another relatively easy indicator to replace.
 
 ### Domain Names - Simple (Teal)
 
-If the domain name is detected, you can buy another domain. Which sound simple if you have the means, but it is much more painful than changing IP addresses or hash values. 
+If the domain name is detected, an attacker can buy or use another domain. This sounds simple if they have the means to do it, but it is still more painful than changing IP addresses or hash values because there is more effort involved in replacing the domain and continuing the attack.
 
 ### Network/Host Artifacts - Annoying (Yellow)
 
-At this stage, if detected, the attacker will feel more annoyed and frustrated, because they would have to change their methodology, and tools, and artifacts.
+At this stage, if the artifacts are detected, the attacker will feel more annoyed and frustrated because they would have to change their methodology, tools, or other artifacts to avoid being detected again.
 
 ### Tools - challenging (Yellow)
 
-This stage is similar to Network/Host Artifacts stage. And the color that represents both stages are same too. At this stage, if detected, the attacker might have to write a different tool, or even change the target.
+This stage is similar to the Network/Host Artifacts stage, and the color that represents both stages is the same too. At this stage, if the attacker's tools are detected, they might have to modify or write a different tool, or even change their target.
 
 ### Tactics, Techniques and Procedures (TTPs) - hardest (Red)
 
-This is the hardest to change if detected. The attacker would be left with two choices, go back and learn more ways to not get detected, or give up and change the target. 
+This is the hardest level to change if detected. The attacker would be left with two choices: go back and learn more ways to avoid detection, or give up and change their target.
 
-The structure is constructed in a way of a pyramid because the higher you detect in the pyramid, the more difficult it generally is for an attacker to change their behavior. (I might need to add some words here).
+The structure is constructed as a pyramid because the higher you go in the pyramid, the more difficult it generally is for an attacker to change their behavior. Detecting something higher up the pyramid can therefore cause more disruption to the attacker because it can force them to change the way they operate, rather than simply replacing one indicator.
 
 ## Cyber Kill Chain
 
