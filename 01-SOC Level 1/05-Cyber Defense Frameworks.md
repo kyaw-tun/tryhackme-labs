@@ -62,13 +62,12 @@ The seven stages:
 6. Command & Control
 7. Actions on Objectives
 
-Short explanation of how defenders can use the stages to understand where an attack is occurring and where it can potentially be disrupted.
+...
 
 ## Unified Kill Chain
 
-Brief explanation of why the Unified Kill Chain exists and how it expands the traditional Kill Chain into a more detailed model.
+...
 
-[List the 18 phases here, without explaining every phase.]
 
 ## Comparing the Frameworks
 
@@ -80,10 +79,8 @@ Brief explanation of why the Unified Kill Chain exists and how it expands the tr
 
 ## My Experience
 
-I was already familiar with many of these concepts from my previous cybersecurity studies. When completing these rooms, I relied heavily on pattern recognition and knowledge accumulated from studying networking, security concepts, and attack techniques.
-
-The main value of these rooms for me was putting these concepts into established defensive frameworks rather than learning each concept individually.
+...
 
 ## Conclusion
 
-These frameworks provide different perspectives on the same problem: understanding adversary activity and identifying opportunities for detection and disruption.
+...
