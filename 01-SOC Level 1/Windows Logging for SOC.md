@@ -1,1 +1,0 @@
-Windows Logging for SOC
