@@ -1,1 +1,0 @@
-Linux Logging for SOC
