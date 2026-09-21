@@ -52,6 +52,8 @@ The structure is constructed as a pyramid because the higher you go in the pyram
 
 ## Cyber Kill Chain
 
+The Cyber Kill Chain is a model developed by Lockheed Martin that describes a cyber attack as a sequence of stages. It provides defenders with a high-level view of an attacker's progression, from the initial preparation and targeting of a victim to the eventual achievement of their objective.
+
 The seven stages:
 
 1. Reconnaissance
@@ -62,7 +64,11 @@ The seven stages:
 6. Command & Control
 7. Actions on Objectives
 
-...
+The idea is not necessarily that every real-world attack will follow these stages perfectly or in exactly this order. Rather, the model provides a way to understand an attacker's progression and identify opportunities where defenders may be able to detect, prevent, or disrupt the attack.
+
+When I started doing cyber security about six months ago and encountered Cyber Kill Chain, I didn't think much of it. I just learned it as steps that attackers take to infiltrate a system or organization. And I learned these stages by heart (it is pretty easy). And MITRE ATT&CK was a subsequent lesson, and the steps on that would be very overwhelming. And i would think why shouldn't Cyber Kill Chain be enough, why would attackers need more steps (as if attackers follow these steps and not the other way around).
+
+But now, after 4 months of TryHackMe and multiple CTF rooms, and redoing it again, I now understand that it isn't enough. It merely covers the basics or just an overview of the steps. But it is helpful to know nonetheless, it gives you a glimpse on where the attacker is on his path and what is his next step is going to be.
 
 ## Unified Kill Chain
 
