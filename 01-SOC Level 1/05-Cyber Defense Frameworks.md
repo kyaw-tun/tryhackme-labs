@@ -64,11 +64,19 @@ The seven stages:
 6. Command & Control
 7. Actions on Objectives
 
-The idea is not necessarily that every real-world attack will follow these stages perfectly or in exactly this order. Rather, the model provides a way to understand an attacker's progression and identify opportunities where defenders may be able to detect, prevent, or disrupt the attack.
+The Cyber Kill Chain provides a high-level view of how an attack can progress, from the attacker gathering information about a target to eventually achieving their objective. For defenders, the value is not necessarily in predicting exactly what an attacker will do next, but in understanding where an attack is taking place and identifying opportunities to detect or disrupt it.
 
-When I started doing cyber security about six months ago and encountered Cyber Kill Chain, I didn't think much of it. I just learned it as steps that attackers take to infiltrate a system or organization. And I learned these stages by heart (it is pretty easy). And MITRE ATT&CK was a subsequent lesson, and the steps on that would be very overwhelming. And i would think why shouldn't Cyber Kill Chain be enough, why would attackers need more steps (as if attackers follow these steps and not the other way around).
+When I started learning cybersecurity about six months ago and first encountered the Cyber Kill Chain, I didn't think much of it. I just learned it as a series of steps that attackers take to infiltrate a system or organization. The seven stages were also fairly easy to memorize, so at the time I didn't think there was much more to it.
 
-But now, after 4 months of TryHackMe and multiple CTF rooms, and redoing it again, I now understand that it isn't enough. It merely covers the basics or just an overview of the steps. But it is helpful to know nonetheless, it gives you a glimpse on where the attacker is on his path and what is his next step is going to be.
+Later, when I encountered MITRE ATT&CK, I found the number of tactics and techniques much more overwhelming. I remember wondering why the Cyber Kill Chain wasn't enough. If an attack could be represented by seven stages, why would we need a framework with so many more?
+
+After several months of TryHackMe and working through different CTF rooms, I understand the distinction much better.
+
+The Cyber Kill Chain is useful as a high-level overview of an attack. It gives defenders a way to understand the general progression of an intrusion and think about where it could be detected or disrupted.
+
+But it doesn't describe all the different ways an attacker can operate within those stages. Real attacks aren't necessarily neat, linear processes where an attacker moves through seven steps one after another. Attackers can use different techniques, repeat activities, skip stages, or perform multiple activities at once.
+
+That's where more detailed frameworks such as MITRE ATT&CK become useful. I now see the Cyber Kill Chain less as a complete description of an attack and more as a big-picture map that helps put the more detailed techniques into context.
 
 ## Unified Kill Chain
 
