@@ -127,10 +127,8 @@ For example, an attacker might corrupt an organization's data, steal confidentia
 | Cyber Kill Chain | Describe an attack as a sequence of stages |
 | Unified Kill Chain | Provide a more detailed model of adversary activity |
 
-## My Experience
-
-...
-
 ## Conclusion
 
-...
+Overall, these three frameworks helped me understand cyber attacks from different perspectives. The Pyramid of Pain showed me how different types of indicators affect an attacker, while the Cyber Kill Chain and Unified Kill Chain helped me understand the different stages and activities involved in an attack.
+
+I found these rooms useful because they helped connect many of the concepts I had already learned and put them into a more structured way of thinking about attacks and defense.
