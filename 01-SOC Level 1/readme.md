@@ -23,4 +23,5 @@
 - Linux Logging for SOC
 - Windows Logging for SOC
 - Phishing Unfolding
-  ....
+- Detecting Web Attacks
+- Log Analysis with SIEM
