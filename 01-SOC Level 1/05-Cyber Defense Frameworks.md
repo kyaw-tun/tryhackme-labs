@@ -80,8 +80,44 @@ That's where more detailed frameworks such as MITRE ATT&CK become useful. I now 
 
 ## Unified Kill Chain
 
-...
+The Unified Kill Chain expands on the traditional Cyber Kill Chain by breaking an attack into more detailed stages. While the Cyber Kill Chain provides a high-level overview of how an attack progresses, the Unified Kill Chain adds more steps to provide a more complete view of the different activities an attacker may perform during an intrusion.
 
+1. Reconnaissance
+2. Weaponization
+3. Delivery
+4. Social Engineering
+5. Exploitation
+6. Persistence
+7. Defense Evasion
+8. Command & Control
+9. Pivoting
+10. Discovery
+11. Privilege Escalation
+12. Execution
+13. Credential Access
+14. Lateral Movement
+15. Collection
+16. Exfiltration
+17. Impact
+18. Objectives
+
+These steps are grouped into three broader sections: In, Through, and Out.
+
+## In — Initial Foothold
+
+The first nine steps are classified as "In", referring to the attacker gaining an initial foothold in the target environment. During this stage, the attacker gathers information, prepares their attack, attempts to gain access, and establishes the access needed to continue the attack.
+
+## Through — Network Propagation
+
+Steps 9 through 14 are classified as "Through", referring to network propagation. At this stage, the attacker attempts to move through the environment, discover other systems, obtain higher privileges, execute actions, access credentials, and move laterally across the network.
+
+The exact activities depend on what the attacker is trying to accomplish and what access they have managed to obtain.
+
+## Out — Action on Objectives
+
+The final four steps are classified as "Out", referring to the attacker's actions against their objectives. At this point, the attacker may collect and exfiltrate sensitive information, cause an impact to the organization, or carry out whatever objective they originally intended.
+
+For example, an attacker might corrupt an organization's data, steal confidential files and sell them, or use stolen information to blackmail the organization. In a ransomware attack, their objective could be to encrypt data and demand payment in exchange for restoring access.
 
 ## Comparing the Frameworks
 
