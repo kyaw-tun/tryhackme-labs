@@ -20,7 +20,7 @@ This write-up covers my understanding of these three rooms and the key concepts 
 
 ## Pyramid of Pain
 
-Pyramid of Pain is, as per my understanding, the level of pain it would cause an attacker to change their approach when their advances are detected. They are classified by different levels and colors, which makes it easier to identify how difficult it would be for an attacker to change each part.
+Pyramid of Pain is, as per my understanding, the level of pain it would cause an attacker to change their approach when their activities are detected. They are classified by different levels and colors, which makes it easier to identify how difficult it would be for an attacker to change each part.
 
 Here are the levels:
 
@@ -40,15 +40,15 @@ If the domain name is detected, an attacker can buy or use another domain. This 
 
 At this stage, if the artifacts are detected, the attacker will feel more annoyed and frustrated because they would have to change their methodology, tools, or other artifacts to avoid being detected again.
 
-### Tools - challenging (Yellow)
+### Tools - Challenging (Yellow)
 
 This stage is similar to the Network/Host Artifacts stage, and the color that represents both stages is the same too. At this stage, if the attacker's tools are detected, they might have to modify or write a different tool, or even change their target.
 
-### Tactics, Techniques and Procedures (TTPs) - hardest (Red)
+### Tactics, Techniques and Procedures (TTPs) - Hardest (Red)
 
 This is the hardest level to change if detected. The attacker would be left with two choices: go back and learn more ways to avoid detection, or give up and change their target.
 
-The structure is constructed as a pyramid because the higher you go in the pyramid, the more difficult it generally is for an attacker to change their behavior. Detecting something higher up the pyramid can therefore cause more disruption to the attacker because it can force them to change the way they operate, rather than simply replacing one indicator.
+The structure is a pyramid because the higher you go in the pyramid, the more difficult it generally is for an attacker to change their behavior. Detecting something higher up the pyramid can therefore cause more disruption to the attacker because it can force them to change the way they operate, rather than simply replacing one indicator.
 
 ## Cyber Kill Chain
 
