@@ -1,5 +1,7 @@
 # Jr Penetration Tester Path
 
+This file list the rooms I did in the **Jr Penetration Tester** from the TryHackMe platform. And the rooms at the end, I might try to write my own understanding of those rooms. 
+
 ## Rooms I did (with categories)
 
 ### Start Your cyber security Journey
@@ -83,9 +85,14 @@
 
 - Writing Pentest Reports
 
-## Rooms to Write
+## Rooms to Write (not in order)
 
--
--
--
-...
+- Content Discovery
+- SQL injection introduction
+- Wireless Security
+- Linux Privilege Escalation: Enumeration
+- Intro to AD Authentication
+- Intro to AD Breaching
+- AD: Basic Enumeration
+- Writing Pentest Reports
+... (and might update later)
