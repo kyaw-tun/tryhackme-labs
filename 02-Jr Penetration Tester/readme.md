@@ -19,7 +19,7 @@
 - Passive reconnaissance
 - Active reconnaissance
 
-### Nmap
+### Nmap (tool section)
 
 - Nmap Live Host Discovery
 - Nmap Basic Port Scans
@@ -28,7 +28,7 @@
 
 - Content Discovery
 
-### Burpsuite 
+### Burpsuite (tool section)
 
 - Burpsuite Repeater
 
@@ -54,9 +54,9 @@
 ### Password Attacks
 
 - Phishing Basics
-- Hydra
+- Hydra (tool section)
 
-### Metasploit and Exploitation
+### Metasploit and Exploitation (tool section)
 
 - Metasploit: The Basics
 
