@@ -1,5 +1,11 @@
 # Content Discovery
 
+**TryHackMe Room:** [Content Discovery](https://tryhackme.com/room/contentdiscoveryx)
+
+This write-up covers my understanding of the room and the key concepts I took away from it.
+
+## Overview
+
 This room covers the fundamentals of web content discovery, including manually finding common files and directories, using OSINT techniques such as Google Dorking, searching archives and repositories, enumerating S3 buckets, and using Gobuster for automated directory, subdomain, and virtual-host discovery.
 
 When I first completed the room, Gobuster was still a relatively unfamiliar tool to me. I didn't have my own wordlists at the time either, and I hadn't yet developed the habit of selecting and managing wordlists depending on what I was trying to enumerate.
