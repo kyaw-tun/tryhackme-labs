@@ -134,3 +134,9 @@ gobuster vhost -u "http://MACHINE_IP" --domain example.thm -w /usr/share/wordlis
 - `--exclude-length` - filters out false positives
 
 ## Conclusion
+
+I had completed this room once before, roughly one or two months ago. At that point, Gobuster was still unfamiliar to me. I didn't have my own wordlists either, and I hadn't yet understood that `wordlists` were something I would need to manage separately.
+
+After doing many CTFs since then, Gobuster has become a normal part of my workflow. Directory enumeration with it is no longer something I have to think much about; choosing a wordlist and adjusting the command has become routine.
+
+Re-doing this room therefore felt quite different. Interestingly, I discovered that there was still something about Gobuster that I hadn't encountered in my CTFs: DNS/subdomain enumeration and virtual-host enumeration. In the examples and rooms I had encountered previously, I was much more accustomed to seeing tools such as `ffuf` used for subdomains and virtual hosts, while Gobuster was generally used for directory enumeration. This was a useful reminder that becoming comfortable with a tool doesn't necessarily mean I know all of its capabilities.
