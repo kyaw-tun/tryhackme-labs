@@ -79,6 +79,58 @@ Wordlist is important when using GoBuster as there are multiple common ones. You
 
 ## Automated Discovery - Subdomains & Virtual Hosts
 
+Gobuster is a web directory enumerating tool written in Go language. During most CTFs, you have to use it or other web enumerating tool like `ffuf`.
 
+There are multiple ways to enumerate web directories. The most common/easy one is running: 
+
+```bash
+gobuster dir -u http://MACHINE_IP -w /usr/share/wordlists/SecLists/Discovery/Web-Content/common.txt
+```
+
+The path to wordlist may differ as I have my own on `/usr/share/wordlists/dirbuster/` directory. What that command does is enumerate the web Url based on the most common directory names. So, it will try to enter each word from that list and check if it exist.
+
+Here:
+
+- `-u` - target URL
+- `-w` - target wordlist
+
+Wordlist is important when using GoBuster as there are multiple common ones. You will have to choose based on your own needs, as some provided expansive wordlists but they take too much time to finish enumerating. And not all fast ones will cover all of the wordlist that the website might contain.
+
+## Automated Discovery - Subdomains & Virtual Hosts
+
+Examples: 
+
+- Normal domain - `tryhackme.thm`
+- subdomain - `mobile.tryhackme.thm`
+
+When you are doing web enumeration, you should always enumerate for subdomains too. For example, if there was a vulnerability in the website, they might have fixed it for the main website (`tryhackme.thm`) but not for the subdomain (`mobile.tryhackme.thm`).
+
+### Subdomain vs virtual Hosts
+
+- Subdomain - It is resolved through DNS. You have to assign ip addresses to each subdomain. 
+- Virtual Hosts - It is resolved through web server. Meaning, one ip address can run multiple websites, with the server using the `Host:` HTTP Header
+
+And when enumerating subdomain and virtual hosts in `gobuster`, you can use `dns` mode and `vhost` mode. The rooms had shown some examples. But first, you have to update some files, in order to do that. Like adding a ip address and domain/subdomain to `/etc/hosts` file and adding ip address to `/etc/resolv-dnsmasq` file. 
+
+### DNS mode command example
+
+```bash
+gobuster dns -d example.thm -w /usr/share/wordlists/SecLists/Discovery/DNS/subdomains-top1million-5000.txt --wildcard
+```
+
+- `-d` - domain (long form is `--domain`) 
+
+Other flags:
+
+- `-i` - show ip (long form is `--show-ips`)
+- `-r` - use a custom dns for lookup (long form is `--resolver`)
+
+### vhost mode command example
+
+```bash
+gobuster vhost -u "http://MACHINE_IP" --domain example.thm -w /usr/share/wordlists/SecLists/Discovery/DNS/subdomains-top1million-5000.txt --append-domain --exclude-length 250-320
+```
+- `--append-domain` - combine each wordlist with the domain
+- `--exclude-length` - filters out false positives
 
 ## Conclusion
