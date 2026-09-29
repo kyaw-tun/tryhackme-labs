@@ -78,6 +78,42 @@ And there is also `informatino_schema` database which is a database that contain
 
 ## What is SQL Injection?
 
+So, how does SQL injection work? And what is it exactly? Is there a magic code that lets you access unauthorized data? Well, I used to think so. I used to think, you are in a database, and you enter a magic code or codes, and then it will automatically open the tables for you. But it doesn't work like that.
+
+So, in a normal article website, when you select an article like this `https://website.thm/article?id=1,`, behind the scene, the SQL translates this to:
+
+```sql-text
+SELECT * FROM articles WHERE id = 1 AND public = 1;
+```
+
+But here is where the vulnerability happens when building the query by directly concatenating user input directly into the SQL string, like this:
+
+```php
+$query = "SELECT * FROM articles WHERE id = " . $_GET['id'] . " AND public = 1;";
+```
+
+So, whatever id you select, becomes part of the SQL query. And you can manipulate it in this way:
+
+```sql-text
+SELECT * FROM articles WHERE id = 1 OR 1=1-- AND public = 1;
+```
+This means get everything from the table named `articles` where one or both these clauses are true `id=1`, `1=1`. So, we all know that `1=1`, so, the result would include everything from the table `articles` even when it's not public because the public part is commented out.
+
+There are three types of SQL injections:
+
+- In-Band SQL Injection
+- Blind SQL Injection
+- Out-of-Band SQL Injection
+
+Here are the basic commands to detect SQL injection
+
+- `'`
+- `"`
+- `;--`
+- `OR 1=1`
+
+But not every website or database will be set to return errors, you have to check them yourself.
+
 ## In-Band SQL Injection
 
 ## Blind SQL Injection: Authentication Bypass
