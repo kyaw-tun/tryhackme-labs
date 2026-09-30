@@ -126,4 +126,6 @@ But not every website or database will be set to return errors, you have to chec
 
 ## Practical
 
+The practical lab of this room is pretty straightforward, and there is a step by step guide on the room itself. So, I won't be including this.
+
 ## Conclusion
