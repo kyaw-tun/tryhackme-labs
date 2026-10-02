@@ -36,7 +36,7 @@ The wireless devices communicate by sharing radio waves over a shared network ai
 
 ### Association Process
 
-When a device (client) tries to connect to an AP, these processes happens:
+When a device (client) tries to connect to an AP, these processes happen:
 
 1. Scan - Device scans for available networks
 2. Select & Associate - Device select SSID and sends association request
