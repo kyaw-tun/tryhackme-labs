@@ -125,6 +125,19 @@ Here are the recommendations:
 
 ## Other Wireless Technologies
 
-## Test (maybe, don't include it?)
+## Knowledge Test
+
+### Matching the attack
+
+| Attack Scenario | Wireless Technology |
+| --- | --- |
+| An attacker within range connects to a victim's phone without authorization and downloads their contacts and messages  | Bluetooth (Short Range Pairing) |
+| An attacker sniffs the network during device pairing and recovers the encryption key, which was only protected by a well-known default value shared across all devices. | Zigbee (IoT Mesh Protocol) |
+| Two attackers use relay devices to forward the communication between a victim’s contactless payment card and a shop’s payment terminal in real time. | NFC (13.56 MHz contactless) |
+| An attacker captures the four-way handshake between a client and an access point, then runs an offline dictionary attack to recover the network password | Wi-Fi (802.11) |
+| An attacker records a signal from a remote control and replays it to operate the target device from outside a window, without needing any authentication. | Infrared (Line of sight) |
+| An attacker reads data from an employee’s access badge and writes it to a blank card, producing a working copy that opens the office door. | RFID (Tag Identification) |
 
 ## Conclusion
+
+This room is very fun to do even if it's theory heavy. And I already knew most of the facts presented in the room. But i decided to write it because there were things I still had trouble differentiating about, like RFID and NFC. I have heard and was very familiar with NFC, but i have never used it hands on as not even my phone comes with it. And on top of that this room introduced RFID, and after learning them, it made me think they are the same thing. That is why i decided to learn a bit more so that i would be able to distinguish them.
