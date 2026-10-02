@@ -95,6 +95,32 @@ There are 4 Wi-Fi security protocols. Two of them are old protocols that are dep
 
 ## Bluetooth Security
 
+There are two types of Bluetooth: classic Bluetooth and Bluetooth Low Energy (BLE). Classic Bluetooth is used in streaming audio and transferring files. And BLE is used in smart devices, like smart watches, fitness trackers, smart locks. 
+
+### Common Bluetooth Security Risks
+
+- Unnecessary Discoverability 
+- Weak Pairing Mechanisms
+- Unauthorized Pairing
+- Bluejacking
+- Bluesnarfing
+- Bluebugging
+- Lack of Device Updates
+
+### Security Consideration for Bluetooth
+
+Here are the recommendations:
+
+1. Disable Bluetooth when not in use
+2. Avoid leaving devices in discoverable mode.
+3. Use modern Bluetooth versions.
+4. Require user approval for pairing.
+5. Avoid pairing in public places.
+6. Remove unused paired devices.
+7. Keep devices updated.
+8. Monitor BLE advising data.
+9. Avoid "just works" only devices in sensitive environments
+
 ## RFID and NFC Security
 
 ## Other Wireless Technologies
