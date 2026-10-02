@@ -46,6 +46,53 @@ When a device (client) tries to connect to an AP, these processes happen:
 
 ## Wi-Fi Security
 
+For this section, Wi-Fi versions over the years, security protocols that it has been using, Wi-Fi misconfiguration, and common Wi-Fi attacks, and how to protect the Wi-Fi network are covered.
+
+### Different Versions of Wi-Fi
+
+| Standard | Generation | Year | Frequency | Key Improvement |
+| --- | --- | --- | --- | --- |
+| `802.11` | - | 1997 | `2.4 GHz` | 2 Mbps |
+| `802.11b` | - | 1999 | `2.4 GHz` | 11 Mbps |
+| `802.11g` | - | 2003 | `2.4 GHz` | 54 Mbps |
+| `802.11n` | Wi-Fi 4 | 2009 | `2.4 GHz`,`5 GHz` | 600 Mbps |
+| `802.11ac` | Wi-Fi 5 `common` | 2013 | `5 GHz` | up to 6.9 Gbps |
+| `802.11ax` | Wi-Fi 6/6E `common` | 2021 | `2.4 GHz`, `5 GHz`, `6 GHz` | up to 9.6 Gbps |
+| `802.11be` | Wi-Fi 7 | 2024 | `2.4 GHz`, `5GHz`, `6 GHz` | up to 46 Gbps |
+
+### Wi-Fi Security Protocols
+
+There are 4 Wi-Fi security protocols. Two of them are old protocols that are deprecated now, and are not secure at all, and 2 common protocols that are widely used:
+
+- WEP - This security protocol can be broken, and it is advised to not use this protocol even though some old routers still do.
+- WPA - This protocol is deprecated, and very less secure than its successors.
+- WPA2 - This is widely used protocol in both consumer and enterprise networks.
+- WPA3 - This is a new protocol, it is present in modern mobile phones but for routers, they are still very less common. And it uses the strongest encryption of all.
+
+### Common Wi-Fi Misconfiguration
+
+- Using outdated protocol like WEP or WPA
+- Using weak password
+- Using unnecessary features like WPS
+- Using default credentials
+
+### Common Wi-Fi Attack concept
+
+- Password attack - This means brute-forcing Wi-Fi network
+- Rogue Access Point - Connecting an access point (router) that doesn't belong to the network intentionally or unintentionally
+- Evil Twin Attack - Faking the SSID as a legitimate network and intercepting traffic and capturing credentials 
+- Deauthentication Attacks - Forcing devices to disconnect from the network
+- Traffic Interceptions - Capturing the traffic if the encryption is weak or improperly configured
+
+### Protecting Wi-Fi Networks
+
+- Using WPA2 or WPA3 with strong passphrases
+- Turning off outdated protocols such as WEP
+- Turning off WPS if not required
+- Changing default administrative credentials
+- Implementing network segmentation
+- Regularly updating firmware on access points
+
 ## Bluetooth Security
 
 ## RFID and NFC Security
