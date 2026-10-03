@@ -123,6 +123,35 @@ Here are the recommendations:
 
 ## RFID and NFC Security
 
+RFID (Radio frequency identification) is a technology that uses electromagnetic fields to identify and track tags attached to objects.
+NFC (Near Field Communication) is a technology that enables two devices to exchange data when brought into close proximity. 
+
+Here are their differences:
+
+|     | RFID | NFC |
+| --- | --- | --- |
+| Frequency | 13.56 MHz | 125 kHz - 960 MHz |
+| Range | Up to 5 cm | Up to 100+ m |
+| Communication | Two-way | One-way (typical) |
+| Common Uses | Contactless payments, Phone pairing, Transit cards | Access badges, Inventory tracking, Asset management |
+
+### Common RFID and NFC Security Risks
+
+- Eavesdropping
+- Cloning
+- Relay attacks
+- Unauthorized scanning (skimming)
+- Lost or stolen cards
+
+### Security Considerations for RFID and NFC
+
+- Use cards that support encryption
+- Limit sensitive data stored on cards or use tokenization
+- Immediately deactivate lost or stolen cards
+- Use protective sleeves such as Faraday pouches to protect against unauthorized scanning
+- Update access controls regularly
+- Implement secondary biometric authentication where possible
+
 ## Other Wireless Technologies
 
 ## Knowledge Test
