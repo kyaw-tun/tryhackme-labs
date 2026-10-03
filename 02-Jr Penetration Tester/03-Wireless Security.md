@@ -152,7 +152,11 @@ Here are their differences:
 - Update access controls regularly
 - Implement secondary biometric authentication where possible
 
-## Other Wireless Technologies
+## Other Wireless Security
+
+In this modern environment, there are many other wireless technology devices apart from the ones mentioned above. They support smart devices, automation systems, and connected infrastructure.
+
+The ones that are mentioned in this room are Zigbee, Z-Wave, LoRa (Long Range), cellular (e.g., LTE-M, NB-IoT) and infrared. I am not going to mention one by one. They all pose security risks in emerging wireless ecosystems. 
 
 ## Knowledge Test
 
