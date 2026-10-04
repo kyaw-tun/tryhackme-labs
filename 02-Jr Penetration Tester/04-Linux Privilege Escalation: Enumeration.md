@@ -68,7 +68,7 @@ The `cron` service can be viewed in `etc/crontab` files and the scheduled conten
 
 7. `dpkg`
 
-The `dpkg` stands for debian package. It is like a format of the  applications for the Debian based Linux OSes, kind of like `.msi` for Windows.
+The `dpkg` stands for debian package manager.
 
 You can list the installed packages with the command `dpkg -l`. 
 
@@ -107,24 +107,49 @@ This file reveals the number of user accounts in the system, both system users a
 
 They will show the number of network interfaces of the system.
 
-2. `netstat`
+2. `netstat` or `ss`
 
 This command shows existing communications between services both internal and external. And it has lots of options to gather information on existing connections.
 
-`netstat -a`
-`netstat -at` or `netstat -au`
-`netstat -l`
-`netstat -s`
-`netstat -tp`
-`netstat -tpln`
-`netstat -i`
-`netstat -ano`
+- `netstat -a`
+- `netstat -at` or `netstat -au`
+- `netstat -l`
+- `netstat -s`
+- `netstat -tp`
+- `netstat -tpln`
+- `netstat -i`
+- `netstat -ano`
 
 Nowadays, it's been replaced by the `ss` command. And you can check out the functions of the commands in the man page or in help page in terminal, you can get it with `netstat --help` or `ss --help`.
 
 ## File Enumeration
 
 1. `ls`
+
+This is in my opinion the most used Linux command along with the `cd`. What it does is list contents inside the directory. Most common ones that go along with the `ls` commands are:
+
+- `ls -l` - Use long listing format
+- `ls -la` - Here, `a` means all. So, it will include hidden files and directroies.
+- `ls -lah` - Here, `h` means "human readable", so, it will list the size of the content as 4.0K instead of 4096.  
+
 2. `find`
 
+This command list the content you want to search. This command is very useful if you know how to use it. Here are some ways that's mentioned in the room:
+
+- `find . -name flag1.txt`
+- `find /home -name flag1.txt`
+- `find / -type d -name config`
+- `find / -type f -perm 0777`
+- `find / -perm -a=x`
+- ...
+
+When looking for files with special permissions:
+
+- `find / -perm -u=s -type f 2>/dev/null`
+- `find / -perm -g=s -type f 2>/dev/null`
+- `find / -perm 4000 -type f 2>/dev/null`
+- ...
+
 ## Conclusion
+
+When I first did this room, I was already familiar with most of the commands and their usability. But I wasn't familiar with them all. For example, I wasn't familiar with `netstat` or `find`. I knew `find` existed, but I didn't know it could be so much useful during privilege escalation. And now, when revisiting this room after many CTFs, I can say that enumeration is less about knowing a bunch of commands and more about knowing what to look for and why.
