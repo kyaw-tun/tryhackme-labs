@@ -91,8 +91,8 @@ This file list the rooms I did in the **Jr Penetration Tester** from the TryHack
 - SQL injection introduction
 - Wireless Security
 - Linux Privilege Escalation: Enumeration
-- Intro to AD Authentication
-- Intro to AD Breaching
-- AD: Basic Enumeration
-- Writing Pentest Reports
+- Intro to AD Authentication (incomplete)
+- Intro to AD Breaching (incomplete)
+- AD: Basic Enumeration (incomplete)
+- Writing Pentest Reports (incomplete)
 ... (and might update later)
