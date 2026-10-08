@@ -3,6 +3,9 @@
 This write-up covers my understanding of the room and the key concepts I took away from it.
 
 > **TryHackMe Room:** [AD Basic Enumeration](https://tryhackme.com/room/adbasicenumeration)
+> 
+
+## Introduction
 
 Active Directory is the phrase I started hearing when I started learning cybersecurity concepts many months ago. As a Linux user for most of my life, I was not familiar with it, nor have I encountered it back when I was on Microsoft Windows. Even though I now know the importance of it, I can't find a Linux Equivalent to it (Maybe there isn't one).
 
@@ -143,8 +146,34 @@ We can manually try querying each individual user RID if `enumdomusers` is restr
 for i in $(seq 500 2000); do echo "queryuser $i" |rpcclient -U "" -N 10.211.11.10 2>/dev/null | grep -i "User Name"; done
 ```
 
-However, when I did this, I was only able to enumerate the first 3 users from when I ran with `rpcclient`. And I did try multiple times.   
+However, when I did this, I was only able to enumerate the first 3 users from when I ran with `rpcclient`. And I did try multiple times.  
+
+## Username Enumeration With Kerbrute
+
+We can identify which of the usernames we found are real, current accounts. Because they can be usernames from disabled accounts, non-domain accounts, fake honeypot users, or even false positives.
+
+And we can check that with `Kerbrute`. First, we copy the usernames we found on a file, only usernames. And then we can check it with:
+
+```bash
+kerbrute userenum --dc 10.211.11.10 -d tryhackme.loc users.txt
+```
 
 ## Password Spraying
 
+Now, that we know valid, active usernames, we can try password spraying to see if we can. In real world scenarios, that is how we would do. Let's just say that the domain or organization has a leaked password or they use a password variation of this: `Password!`. Here is the list:
+
+- `Password!`
+- `Password1`
+- `Password1!`
+- `P@ssword`
+- `Pa55word1`
+
+We can put them in a file named `passwords.txt` and  **CrackMapExec** to run our password spraying attack against the WRK computer:
+
+```bash
+crackmapexec smb 10.211.11.20 -u users.txt -p passwords.txt
+```
+
 ## Conclusion
+
+This room is a very beginner friendly introduction to enumerating Active Directory. And even though, AD authentication and AD breaching rooms came first in the path, I decided to write this one first, because it is very easy to understand especially for AD beginner like me. And now I get to think that Microsoft Windows' Active Directory is not so intimidating after all.
