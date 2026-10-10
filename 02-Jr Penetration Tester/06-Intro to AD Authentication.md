@@ -289,4 +289,35 @@ And you get the administrator access.
 
 ## Detections and Mitigations
 
+### Detecting NTLM -Based Attacks
+
+Event ID 4624 is logged on the target server for every successful logon. When NTLM is used, several fields stand out:
+
+- Authentication Package: `NTLM`, while Kerberos logons show `Kerberos` in the same field.
+- Logon Type: `3`, indicating a network logon, typical for Pass-the-Hash via WinRM or SMB.
+- Source Network Address: `blank`. When the DC validates a NTLM logon, the resulting 4624 event often lacks a source IP address, making attribution harder. The equivalent Kerberos events (4768/4769) do populate the client address field.
+
+A network logon using NTLM against a high-value target like a Domain Controller is a strong indicator of a Pass-the-Hash attempt.
+
+### Detecting Kerberoasting
+
+Event ID 4769 is generated each time a service ticket is requested. Kerberoasting produces a spike of 4769 events in a short window, often targeting multiple service accounts. Two things to look for:
+
+- High volume of 4769 events from a single account in a short time.
+- Ticket Encryption Type: `0x17` (RC4-HMAC), where modern environments issue AES-256 tickets (`0x12`) by default. An RC4 ticket request from an account that supports AES may indicate a deliberate downgrade to make offline cracking faster.
+
+Event ID 4771 (Kerberos pre-authentication failed) is also worth monitoring. A spike of 4771 events across many accounts in a short window can indicate AS-REP Roasting, where an attacker tests which accounts have pre-authentication disabled, or a brute-force attempt against domain accounts.
+
+## Mitigation
+
+| Attack | Mitigation |
+| ------ | ---------- |
+| Pass-the-Hash | Add privileged accounts to the Protected Users group; disable NTLM where Kerberos is available |
+| NTLM Relay | Enforce SMB signing; enable Extended Protection for Authentication (EPA) on LDAP and AD CS |
+| Kerberoasting | Use strong, random passwords for service accounts or migrate to Group Managed Service Accounts (gMSA) |
+| Golden Ticket | Protect the KRBTGT account; reset its password twice after any suspected compromise |
+| Password Spray | Configure account lockout policies; monitor Event ID 4625 for repeated failures across accounts |
+
 ## Conclusion
+
+This room taught me the difference authentication works in Microsoft AD environment. And I get to learn how NTLM and Kerberos authentication protocols work at a high level, the weaknesses in both protocols that make them vulnerable to attack. I also get to learn practical hands on exploitation of weak password hashing, Pass-the-Hash, Kerberoasting, and Golden Ticket attacks, and how to detect and mitigate these kinds of attack.
