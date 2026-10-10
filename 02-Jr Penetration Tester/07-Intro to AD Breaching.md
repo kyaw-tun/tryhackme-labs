@@ -80,7 +80,54 @@ In both cases, you will have to have the `usernames.txt` file in the current dir
 - `-d thm.loc` - The target domain
 - `--dc 192.168.12.100` - The IP address of the domain controller
 
-## Credentials Discovery
+## Credential Discovery
+
+Now that we know the valid username list, the next step is finding valid credentials. Developers and administrators regularly work with credentials as part of their daily workflows including database connection strings, service account passwords, keys, and deployment secrets. And under pressure to deliver quickly, they often forget to remove them when they deploy their build.
+
+### Hunting Credentials
+
+Two of the places you can find exposed credentials are `git` repositories and in `jenkins`.
+
+In git, there are several places to look:
+
+- Commit history
+- Configuration files
+- Hardcoded secrets
+- CI/CD pipeline definitions
+
+Here is one example:
+
+```bash
+git log -p | grep -i "password\|secret\|token\|key\|credential"
+```
+
+Places to look in jenkins are:
+
+- Build console output
+- Job configurations
+- Environment variables
+- Workspace files
+
+Here is one command example:
+
+```bash
+curl http://ci.thm.loc/job/webapp-deploy/lastStableBuild/console | grep -i "password\|secret\|token\|credential"
+```
+
+And if it finds one, it can show it to the output:
+
+```bash
+curl http://ci.thm.loc/job/webapp-deploy/lastStableBuild/console | grep -i "password\|secret\|token\|credential"
+  % Total    % Received % Xferd  Average Speed  Time    Time    Time   Current
+                                 Dload  Upload  Total   Spent   Left   Speed
+100  15676   0  15676   0      0   9380      0           00:01          11728
++ echo     Configuring new user accounts with default password: MegaCorp01!
+    Configuring new user accounts with default password: MegaCorp01!
+```
+
+### Practical Scenario
+
+In this practical scenario, we have to go to the simulated GitHub lab and find the credentials. And same with Jenkins' simulated lab.
 
 ## Username Enumeration and Password Spraying
 
