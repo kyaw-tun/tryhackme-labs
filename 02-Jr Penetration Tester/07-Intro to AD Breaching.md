@@ -30,6 +30,56 @@ As we have already discussed in the Enumeration room, these are the ports that a
 
 ## OSINT And Target Reconnaissance
 
+In the real world scenario, when you start, you don't have anything except those open ports. So, for that you might have to start with OSINT, or other active or passive reconnaissance of the target. The goal at this age is just getting the usernames.
+
+You can do any one or more of these:
+
+- LinkedIn
+- GitHub and GitLab
+- Public Data breaches
+- Corporate Websites
+- Job Listings
+
+But in this scenario, the list of usernames are given by the room, so, we do not have to do that. The usernames are of this format:
+
+```text
+administrator
+admin
+guest
+claire.ross
+mary.jenkins
+...
+```
+
+There are many common username formats:
+
+- `first.last` - `jane.smith`
+- `firstlast` - `janesmith`
+- `flast` - `jsmith`
+- `first.l` - `jane.s`
+- `first` - `jane`
+- `last.fast` - `smith.jane`
+
+### Enumerating the usernames
+
+First, we need to figure out if the one or more of the usernames belong in the target network. We can do that with:
+
+```bash
+kerbrute userenum -d thm.loc --dc 192.168.12.100 usernames.txt
+```
+
+And then it will reveal which of the usernames is valid to the network. We can add the valid usernames to a separate file called `valid_users.txt`:
+
+```bash
+kerbrute userenum -d thm.loc --dc 192.168.12.100 usernames.txt -o valid_users.txt
+```
+
+In both cases, you will have to have the `usernames.txt` file in the current directory you are working.
+
+- `userenum` - Kerbrute module for username enumeration
+- `-d thm.loc` - The target domain
+- `--dc 192.168.12.100` - The IP address of the domain controller
+
 ## Credentials Discovery
 
 ## Username Enumeration and Password Spraying
