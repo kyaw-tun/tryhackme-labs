@@ -13,6 +13,21 @@ First off, the rooms asked you to add multiple IP addresses as with their domain
 
 ## Active Directory Breaches
 
+In simple terms, AD breaching is the process of obtaining an initial set of valid AD credentials when starting from scratch. It is the very first phase of any AD attack chain. Without that first set of credentials, we can't enumerate the domain, move laterally, or escalate privileges.
+
+As we have already discussed in the Enumeration room, these are the ports that are important in Active Directory environment. And they act as attack surface:
+
+- DNS (TCP/UDP 53)
+- Kerberos (TCP/UDP 88/464)
+- HTTP/HTTPS
+- LDAP (TCP 389/636)
+- SMB (TCP 445)
+
+### Starting Positions
+
+- Unauthenticated (Black-Box) - You have the network access but you don't have any valid credentials. This is the classic initial access scenario. 
+- Authenticated (Grey-Box) - You have a valid low-level credentials. So, you can skip straight to enumeration and look for escalation paths.
+
 ## OSINT And Target Reconnaissance
 
 ## Credentials Discovery
