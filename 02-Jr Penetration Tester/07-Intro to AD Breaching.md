@@ -127,7 +127,7 @@ curl http://ci.thm.loc/job/webapp-deploy/lastStableBuild/console | grep -i "pass
 
 ### Practical Scenario
 
-In this practical scenario, we have to go to the simulated GitHub lab and find the credentials. And same with Jenkins' simulated lab.
+In this practical scenario, we have to go to the simulated GitHub and Jenkins lab to find the credentials.
 
 ## Username Enumeration and Password Spraying
 
