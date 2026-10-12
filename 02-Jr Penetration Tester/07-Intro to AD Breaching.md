@@ -326,4 +326,57 @@ These two techniques are just the tip of the iceberg when it comes to authentica
 
 ## Mitigations
 
+Here is how how organizations can defend against them.
+
+### Secrets Management
+
+- Use a dedicated secrets vault (such as HashiCorp Vault, Azure Key Vault, or AWS Secrets Manager) to store and retrieve credentials rather than embedding them in source code or configuration files.
+- Implement pre-commit hooks using tools like TruffleHog or Gitleaks to scan for secrets before they are committed to version control.
+- Regularly audit existing repositories for historical credential exposure. Remember, a secret removed in the latest commit still exists in Git history.
+- Rotate credentials immediately when exposure is detected. Removing the secret from the code is not enough; the old credential must be invalidated.
+- Mask or redact secrets in CI/CD build logs and restrict access to build output to authorized personnel only.
+
+### Password Policies and Account Lockout
+
+- A minimum password length of 14 or more characters. Length is far more effective than complexity alone.
+- Banning common passwords and organization-specific patterns (e.g., company name + year, season + year) using custom banned password lists. Azure AD Password Protection and similar tools can enforce this.
+- Avoiding organization-wide default passwords for new accounts. Each new account should receive a unique, randomly generated initial password.
+- Configuring account lockout thresholds carefully. A threshold that is too low (e.g., 3 attempts) causes operational disruption; too high (e.g., 50 attempts) gives attackers room to spray freely. A threshold of 5–10 attempts with a 30-minute observation window is a common balance.
+- Monitoring for distributed authentication failures across multiple accounts. This is the signature of a password spray and should trigger an alert even if no single account hits the lockout threshold.
+
+### Device Hardening
+
+The LDAP passback attack relied entirely on a printer with default credentials and a plaintext LDAP configuration. Hardening network devices involves:
+
+- Changing default administrative credentials on all network devices including printers, scanners, MFPs, and IoT devices before deployment.
+- Using LDAPS (port 636) instead of plaintext LDAP (port 389) for all directory integrations. When LDAP traffic is encrypted, a passback attack captures an encrypted session rather than plaintext credentials.
+- Restricting access to device admin interfaces by IP address or VLAN. These interfaces should not be accessible from general user networks.
+- Using dedicated, low-privilege service accounts for device LDAP integrations, never a Domain Admin or other highly privileged account. The service account should have read-only access limited to the specific directory objects the device needs (e.g., address book lookups).
+- Including network devices in regular vulnerability scanning and asset management programs.
+
+### File Share Security
+
+File-based coercion was possible because a share had overly permissive write access. Securing file shares requires:
+
+- Enforcing the principle of least privilege on share permissions. Users should only have write access to shares where they genuinely need it.
+- Monitoring shares for suspicious file types such as `.url`, `.lnk`, `.scf`, and `desktop.ini` files should rarely appear on data shares and can be flagged by file integrity monitoring or endpoint detection rules.
+- Auditing share access to detect anomalous patterns, such as a new file appearing followed by a burst of SMB authentication attempts to an external IP.
+
+### NTLM Hardening
+
+The file-based coercion attack captured an NTLMv2 hash because the victim's machine automatically attempted NTLM authentication to our attacker-controlled listener. Hardening NTLM involves:
+
+- Disabling NTLMv1 entirely and enforcing NTLMv2 as the minimum authentication level via Group Policy (`Network Security: LAN Manager authentication level` set to "Send NTLMv2 response only. Refuse LM & NTLM").
+- Enforcing SMB signing on all domain machines to prevent relay attacks that intercept and forward NTLM authentication.
+- Blocking outbound SMB traffic (TCP 445) at the network perimeter firewall. There is rarely a legitimate reason for internal workstations to initiate SMB connections to external IP addresses.
+- Working toward NTLM deprecation where possible. Microsoft has begun the process of deprecating NTLM in favour of Kerberos, and organisations should plan their migration accordingly.
+
+### Network Segmentation and Access Control
+
+Many of the techniques in this room were possible because services were accessible from parts of the network where they didn't need to be. General network-level mitigations include:
+
+- Segmenting the network so that management interfaces (printer admin panels, Jenkins, dashboards, Git servers) are only accessible from dedicated management VLANs.
+- Restricting access to internal services that do not need to be broadly available. A Jenkins instance used by the development team should not be reachable from the general corporate network.
+- Enforcing multi-factor authentication (MFA) on internet-facing services and critical internal services such as VPN portals, email, and remote access gateways. MFA significantly reduces the impact of a breached password as the credential alone is no longer sufficient to authenticate.
+
 ## Conclusion
