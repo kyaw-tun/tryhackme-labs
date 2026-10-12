@@ -380,3 +380,5 @@ Many of the techniques in this room were possible because services were accessib
 - Enforcing multi-factor authentication (MFA) on internet-facing services and critical internal services such as VPN portals, email, and remote access gateways. MFA significantly reduces the impact of a breached password as the credential alone is no longer sufficient to authenticate.
 
 ## Conclusion
+
+In conclusion, this room demonstrated that gaining domain credentials often requires combining multiple techniques, including reconnaissance, credential discovery, password spraying, printer passback, and file-based coercion. Each method exploits different weaknesses, highlighting the importance of identifying misconfigurations and exposed credentials. In real-world engagements, success comes from adapting to the environment and combining techniques to uncover the most effective path forward.
