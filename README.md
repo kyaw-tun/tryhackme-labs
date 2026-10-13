@@ -2,7 +2,7 @@
 
 A curated collection of selected TryHackMe rooms and exercises from my cybersecurity learning journey.
 
-I started using TryHackMe in May as a hands-on way to build and strengthen my practical cybersecurity knowledge. Since then, I have worked through a range of rooms across SOC operations, penetration testing, CTFs, security tools, and other areas.
+I started using TryHackMe in May 2026 as a hands-on way to build and strengthen my practical cybersecurity knowledge. Since then, I have worked through a range of rooms across SOC operations, penetration testing, CTFs, security tools, and other areas.
 
 This repository does not contain every room I have completed. Instead, I selectively document rooms and exercises that I find particularly useful, interesting, or representative of the areas I have explored.
 
@@ -17,6 +17,8 @@ The repository is organized by learning path and area rather than by completion 
 | CTF Rooms | Selected CTF-style rooms and challenges | In progress |
 | Hacker Holidays Challenge | Selected exercises from the Hacker Holidays challenges | In progress |
 | Tools | Selected rooms focused on security tools and their practical use | In progress |
+
+*Last updated: October 2026. More write-ups in progress.*
 
 ## What I Document
 
