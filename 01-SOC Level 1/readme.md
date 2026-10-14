@@ -23,3 +23,9 @@ Selected write-ups from TryHackMe's SOC Level 1 path, covering SOC fundamentals,
 **Threat intel & malware:** File and Hash Threat Intel, Malware Classification
 
 **Fundamentals:** Network Security Essentials, Network Traffic Basics, Web Security Essentials
+
+## In Progress to write
+
+- Linux Logging for SOC
+- Windows Logging for SOC
+- Phishing Unfolding
