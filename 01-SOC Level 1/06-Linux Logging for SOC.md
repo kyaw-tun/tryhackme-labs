@@ -34,7 +34,7 @@ cat /var/log/syslog | grep CRON
 
 These logs are often located in `/var/log/` directory. You can find system logs, journal logs, kernel logs, authentication logs, etc. in this directory.
 
-You can search for potential logins across all logs (/var/log) with this:
+You can search for potential logins across all logs (`/var/log`) with this:
 
 ```bash
 grep -R -E "auth|login|session" /var/log
