@@ -42,6 +42,24 @@ grep -R -E "auth|login|session" /var/log
 
 ## Authentication Logs
 
+The useful file for monitoring authentication logs is `/var/log/auth.log` (or `/var/log/secure` in RHEL based systems).
+
+You can filter login and logout events with this:
+
+```bash
+cat /var/log/auth.log | grep -E 'session opened|session closed'
+```
+
+Sometimes, there might be multiple failed passwords, along with successful one after those. And that might indicate brute-force attack. You can see them in the logs by:
+
+```bash
+cat /var/log/auth.log | grep "sshd" | grep -E 'Accepted|Failed'
+```
+
+### Other Miscellaneous Events
+
+There are other events such as adding new users, deleting users, modifying users, or password alterations. You can see this by changing the grep value to `grep -E '(passwd|useradd|usermod|userdel)\['`.  And to see the commands executed, you can filter this by changing the grep value to `grep -E 'COMMAND='`.
+
 ## Common Linux Logs
 
 ## Runtime Monitoring
