@@ -62,6 +62,28 @@ There are other events such as adding new users, deleting users, modifying users
 
 ## Common Linux Logs
 
+### Generic System Logs
+
+- `/var/log/kern.log` - kernel logs
+- `/var/log/syslog (or /var/log/messages)` - system logs (covered above)
+- `/var/log/dpkg.log (or /var/log/apt)` - package manager logs for Debian-based systems
+- `/var/log/dnf.log (or /var/log/yum.log)` - package manager logs for RHEL-based systems
+
+### App Specific Logs
+
+There are multiple app specific logs: mail logs to investigate phishing, container logs to catch anomalies, database logs to see which queries were run, webserver logs to see which pages were opened, when and by whom. Here is one example the room gave.
+
+```bash
+cat /var/log/nginx/access.log
+```
+
+### Bash History
+
+There is a file called `.bash_history` and there is a command called `history`. I only knew about the former at first. 
+
+- `.bash_history` gives you the commands from the previous sessions
+- `history` command gives you history from previous and current session
+
 ## Runtime Monitoring
 
 ## Using Auditd
