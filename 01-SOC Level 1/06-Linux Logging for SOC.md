@@ -126,3 +126,6 @@ Although it provides a verbose logging, it is hard to read and ingest into SIEM.
 The key to remember is that all listed tools work on the same principle of monitoring system calls. Once you have understood system calls, you will easily learn all the mentioned tools.
 
 ## Conclusion
+
+Even before doing this room, I already knew that Linux Logs are kept under `/var/log` directory. But the one that are mentioned in this room: syslog, auth.log, and kern.log are not present in my Debian-based machine. And after researching, it stores them in journal directory.
+I also get to learn that the top three log sources for the SOC are auth.log, app-specific logs, and runtime logs. And bash history are not reliable for the SOC because they can be edited. You have to use auditd or similar tool as an alternative solution.
