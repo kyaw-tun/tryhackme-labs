@@ -86,6 +86,12 @@ There is a file called `.bash_history` and there is a command called `history`. 
 
 ## Runtime Monitoring
 
+Runtime events are program launching, file deletion, file creation, modification and network-related events. By default, Linux doesn't log process these events.
+
+Instead, when you need to open a file, create a process, access the camera, or request any other OS service, you make a specific system call. There are over 300 system calls in Linux, like `execve` to execute a program.
+
+All modern EDRs and logging tools rely on them - they monitor the main system calls and log the details in a human-readable format. There is nearly no way for attackers to bypass system calls.
+
 ## Using Auditd
 
 ## Conclusion
