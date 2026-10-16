@@ -94,4 +94,35 @@ All modern EDRs and logging tools rely on them - they monitor the main system ca
 
 ## Using Auditd
 
+Auditd (Audit Daemon) is a built-in auditing solution often used by the SOC team for runtime monitoring. It is not installed on Linux by default. Its instructions for how to use it are located in `/etc/audit/rules.d`.
+
+You can view the generated logs in real time in /var/log/audit/audit.log, but it is easier to use the `ausearch` command, as it formats the output for better readability and supports filtering options. 
+
+Here are some examples:
+
+```bash
+ausearch -i -k proc_wget
+```
+
+Or when you want to find file events matching the "file_sshconf" key:
+
+```bash
+ausearch -i -k file_sshconf
+```
+- `-i` - Interprets numeric values (UIDs, syscalls, timestamps) into human-readable text
+- `-k` - Filters events by the key (tag) defined in the auditd rule
+- `proc_wget` - Optional tag specified by engineers in auditd rules that is useful to filter the events
+- `file_sshconf` -  Optional tag for a rule that monitors the SSH configuration file, used to filter events related to changes to it
+
+### Auditd Alternatives
+
+Although it provides a verbose logging, it is hard to read and ingest into SIEM. That's why many SOC teams resort to the alternative runtime logging solutions, for example:
+
+- Sysmon for Linux
+- Falco
+- Osquery
+- EDRs
+
+The key to remember is that all listed tools work on the same principle of monitoring system calls. Once you have understood system calls, you will easily learn all the mentioned tools.
+
 ## Conclusion
