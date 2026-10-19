@@ -53,6 +53,35 @@ Out of all Windows logs enabled by default, the Security event log is the one th
 
 ## Security Log: User Management
 
+| Event ID | Description |
+| -------- | ----------- |
+| 4720 / 4722 / 4738 | A user account was created/enabled/changed |
+| 4725 / 4726 | A user account was disabled/deleted |
+| 4723 / 4724 | A user changed their password / User's password was reset |
+| 4732 / 4733 | A user was added to / removed from a security group |
+
+These event IDs above are normal in user management IDs. However, these events can be triggered during malicious usage too such as: attacker creating a backdoor account or enabling an old one to avoid detection (4720/4722/4738), disabling privileged SOC accounts to slow down their actions (4725/4726), etc.
+
+All user management events have similar structure, and can be split up in three: 
+- Subject: who did the action
+- Object: who was the target
+- Details: what changes were made
+
+### Hunt for Backdoored Users
+
+1. Open Security logs and filter for 4720 / 4732 event IDs
+
+2. Manually review every event; the red flags are:
+   - No one from your IT department can confirm the action
+   - Changes were made during non-working hours or on weekends
+   - The subject user's name is unknown or unexpected to you
+   - The target user's name does not follow a usual naming pattern
+   
+3. If you confirmed that the action was malicious, find out the login details:
+   - Copy the Logon ID field from your 4720 / 4732 event
+   - Find the corresponding login event with the same Logon ID
+   - Refer to the workbooks from the previous task for further analysis
+
 ## Sysmon: Process Monitoring
 
 ## Sysmon: Files and Network
