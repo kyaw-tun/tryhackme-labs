@@ -145,4 +145,25 @@ Four more events:
 
 ## Powershell: Logging Command
 
+PowerShell  is a powerful tool built into Windows that attackers love to abuse. Mainly because it is both trusted and capable of malware download, system discovery, data exfiltration, and even advanced techniques like process injection.
+
+Every program has a specific purpose: `firefox.exe` is a web browser, `notepad.exe` is a text editor, and `whoami.exe` simply outputs your username. If you're just browsing the web, you might only create a single Firefox process.
+
+PowerShell, on the other hand, is a powerful all-in-one tool for managing the system. Once you launch `powershell.exe`, you can run hundreds of different commands within the same terminal session without creating new processes for each action. This is why Sysmon is not very helpful here, and you'll need to find an alternative logging approach.
+
+### PowerShell History File
+
+One of the simplest and most effective ways to monitor PowerShell is to track PowerShell Commands. The history file is located in:
+
+```shell
+C:\Users\<USER>\AppData\Roaming\Microsoft\Windows\PowerShell\PSReadline\ConsoleHost_history.txt
+```
+
+### Notes:
+
+- The history file is very useful for tracking malicious actions like system discovery or malware download
+- The history file is created for every user, meaning that you may see five files if there are five active system users
+- It survives system reboots unless manually deleted and saves all PowerShell commands entered for all time
+- It does not log command outputs and does not show script content (e.g. when running `powershell .\script.ps1`)
+
 ## Conclusion
