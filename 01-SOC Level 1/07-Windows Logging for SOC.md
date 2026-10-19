@@ -88,6 +88,34 @@ All user management events have similar structure, and can be split up in three:
 
 ## Sysmon: Process Monitoring
 
+Sysmon is a free tool from the Microsoft Sysinternals suite that became a de facto standard for advanced monitoring in addition to the default system logs.
+
+Here is a side to side comparison:
+
+| Event Code                            | Purpose | Limitations |
+| ----------                            | ------- | ----------- |
+| 4688 (Security Log: Process Creation) | Log an event every time a new process is launched | Disabled by default. You need to enable it. |
+| 1 (Sysmon: Process Creation)          | Replace 4688 event code and provide more advanced fields like process hash and its signature | Sysmon is an external tool not installed by default.| 
+
+### Analyze Process Launch
+
+1. Open Sysmon logs and filter for event ID 1
+
+2. Review the fields from the process and binary info groups. The red flags are:
+   - Image is in an uncommon directory like `C:\Temp` or `C:\Users\Public`
+   - Process is suspiciously named like `aa.exe` or `jqyvpqldou.exe`
+   - Process hash ( MD5 or SHA256) matches as malware on VirusTotal
+
+3. Review the fields from the parent process group. The red flags are:
+   - Parent matches red flags from step 2 (suspicious name, path, or hash)
+   - Parent is not expected (e.g. Notepad launching some CMD commands)
+
+4. If still in doubt, go up the process tree until you are confident in your verdict:
+   - Find the preceding event where ProcessId equals ParentProcessId in your event
+   - Analyze it by following steps 2 and 3 (suspicious parent, name, path, or hash)
+
+5. Finally, trace the attack chain by filtering all Security and Sysmon events with the same Logon ID
+
 ## Sysmon: Files and Network
 
 ## Powershell: Logging Command
