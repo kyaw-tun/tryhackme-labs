@@ -118,6 +118,31 @@ Here is a side to side comparison:
 
 ## Sysmon: Files and Network
 
+Sysmon can provide much more than just process creation events. It can log file and registry changes, network connections, queries, and many other crucial events. Furthermore, we can also configure what to log and what to skip, unlike with the default logs.
+
+Four more events:
+
+| Event ID | Security Log | Purpose |
+| -------- | ------------ | ------- |
+| 11/13 (File Create / Registry Value Set) | 4656 for file changes and 4657 for registry changes | Detect files dropped by malware or its changes to the registry (e.g. persistence) |
+| 3/22 (Network Connection / DNS Query) | No direct alternative, requires additional firewall and DNS configuration | Detect traffic from untrusted processes or to known malicious destinations |
+
+### Analyze Process Activities
+
+1. Copy the `ProcessId` field from the event ID 1
+
+2. Search for other Sysmon events with the same `ProcessId`
+
+3. Your red flags for network connection events are: 
+   - Connection to external IPs on port `80` or on non-standard ports like `4444`
+   - Connection to known malicious IPs (e.g. by checking on VirusTotal)
+   - DNS queries to suspicious domains (*.top, *.click, or hpdaykfpadvsl.com)
+   
+4. Your red flags for file and registry changes are: 
+   - Files dropped to staging directories like `C:\Temp` or `C:\Users\Public`
+   - Dropped file is a script (`.bat` or `.ps1`) or an executable file (`.exe` or `.com`)
+   - Created files or registry keys are used for persistence
+
 ## Powershell: Logging Command
 
 ## Conclusion
