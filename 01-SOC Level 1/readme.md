@@ -26,6 +26,4 @@ Selected write-ups from TryHackMe's SOC Level 1 path, covering SOC fundamentals,
 
 ## In Progress to write
 
-- Linux Logging for SOC
-- Windows Logging for SOC
 - Phishing Unfolding
