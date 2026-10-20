@@ -167,3 +167,9 @@ C:\Users\<USER>\AppData\Roaming\Microsoft\Windows\PowerShell\PSReadline\ConsoleH
 - It does not log command outputs and does not show script content (e.g. when running `powershell .\script.ps1`)
 
 ## Conclusion
+
+To conclude, this room is quite practical-heavy, which is exactly why I enjoyed it. While writing this write-up, I realized that explaining the theory is one thing, but the real fun comes from investigating the logs yourself and connecting the dots.
+
+When I first completed this room a couple of months ago, I mostly memorized the important event IDs and got straight to work. After revisiting it to write this summary, I realized how much you can figure out just by knowing what to look for and following the evidence, even without fully understanding every detail beforehand.
+
+As a long-time Linux user, Windows logging was relatively new to me. I learned how to use Event Viewer, where Windows stores its event logs, and where to find the PowerShell history file. Overall, this room showed me that investigating logs is not just about memorizing event IDs. It's also about knowing what to look for, connecting the events, and figuring out what happened.
