@@ -15,6 +15,7 @@ The real intrusion ran on the host belonging to the company’s CEO (`michael.as
 - Unusual parent-child process relationships. PowerShell spawning `nslookup.exe` is not normal user activity. `nslookup` is run from the command line or used internally by Windows, so PowerShell launching it points to a script, and in this case to data being pushed out over DNS.
 - DNS exfiltration. Repeated `nslookup` queries were being made to attacker-controlled domains ending in `haz4rdw4re.io`. The calls came from more than one location on the host (both the user’s `Downloads` folder and the `exfiltration` subfolder beneath it), but all pointed at the same domain infrastructure, consistent with data being chunked and pushed out over DNS to the attacker’s server.
 - Data staged for theft. The activity ran out of a working directory named `C:\Users\michael.ascot\Downloads\exfiltration\`, and sensitive files (financial records) were being read and copied before being sent out.
+-  A mapped network drive used for staging. A network drive (`Z:\`) was attached to the host in one alert and removed in another, with file activity on it in between. Alongside the copying of sensitive files from `Downloads` and `exfiltration`, this fits data being gathered and staged before exfiltration.
 
 Taken together: initial access through phishing, then execution via PowerShell, then collection of sensitive files, then exfiltration over DNS, all centered on the CEO’s machine.
 
@@ -23,7 +24,7 @@ Taken together: initial access through phishing, then execution via PowerShell, 
 Two points worth being honest about, because they’re the actual lesson of this room for me:
 
 - Splunk didn’t confirm the scenario events. The alerts I found there didn’t correspond to what the scenario was showing me, so I classified from the host-level indicators in each alert instead of waiting for the SIEM to validate them.
-- The malicious domain scanned clean. `*.haz4rdw4re.io` came back clean in the threat-intel tool, but the behavior around it (PowerShell-driven `nslookup`, encoded queries, an `exfiltration` folder) was clearly malicious. A clean reputation score doesn’t mean safe, since new attacker infrastructure often is not flagged yet. I classified on what the activity was doing, not on what the tool said about the domain.
+- The suspicious domain scanned clean. `*.haz4rdw4re.io` came back clean in the threat-intel tool, but the behavior around it was clearly malicious: PowerShell-driven `nslookup` queries with chunks of data hidden inside the DNS lookups themselves, run out of an `exfiltration` folder. A clean reputation score doesn’t mean safe, since new attacker infrastructure often is not flagged yet. I classified on what the activity was doing, not on what the tool said about the domain.
 
 ## Where I miscalibrated
 
