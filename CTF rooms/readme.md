@@ -1,3 +1,6 @@
-# Challenge Rooms From TryHackMe
+# CTF Rooms
 
-Some selected ctf rooms from TryHackMe
+Capture-the-flag write-ups from TryHackMe. I document the ones I find interesting or that taught me something, rather than every room I complete.
+
+| Room | Difficulty | Key techniques |
+| ---- | ---------- | -------------- |
