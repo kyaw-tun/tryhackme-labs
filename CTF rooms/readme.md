@@ -4,3 +4,4 @@ Capture-the-flag write-ups from TryHackMe. I document the ones I find interestin
 
 | Room | Difficulty | Key techniques |
 | ---- | ---------- | -------------- |
+| Search Light - OSINT | Easy | OSINT (write-up in progress) |
