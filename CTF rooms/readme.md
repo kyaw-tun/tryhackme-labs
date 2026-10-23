@@ -4,4 +4,4 @@ Capture-the-flag write-ups from TryHackMe. I document the ones I find interestin
 
 | Room | Difficulty | Key techniques |
 | ---- | ---------- | -------------- |
-| Search Light - OSINT | Easy | OSINT (write-up in progress) |
+| [Searchlight - IMINT](./searchlight-imint.md) | Easy | IMINT/GEOINT: image geolocation, reverse image search, Google dorking, video frame analysis (write-up in progress) |
