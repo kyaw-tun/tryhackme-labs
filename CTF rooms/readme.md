@@ -5,3 +5,4 @@ Capture-the-flag write-ups from TryHackMe. I document the ones I find interestin
 | Room | Difficulty | Key techniques |
 | ---- | ---------- | -------------- |
 | [Searchlight - IMINT](./searchlight-imint.md) | Easy | IMINT/GEOINT: image geolocation, reverse image search, Google dorking, video frame analysis |
+| [Chocolate Factory](./Chocolate%20Factory.md) | Easy | Web foothold, reverse shell, world-readable SSH key, sudo/GTFOBins (vi) privilege escalation, steghide, hashcat |
