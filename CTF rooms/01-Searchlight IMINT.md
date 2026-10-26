@@ -1,5 +1,11 @@
 # Searchlight - IMINT
 
+> **TryHackMe Room:** [Searchlight OSINT](https://tryhackme.com/room/searchlightosint)
+
+This write-up covers how I approached the room, step by step. Flags and specific key and password values are not included.
+
+## Introduction
+
 A TryHackMe OSINT room focused on IMINT/GEOINT, image and geospatial intelligence. The goal across nine tasks is to geolocate photographs (and one video) and answer context questions about them, using nothing but what is visible in the image plus open sources.
 
 One thing shapes the whole room: the images are deliberately low quality and stripped of useful EXIF data. I checked with `exiftool` and apart from one small hint in Task 2, there was nothing to geolocate from. So this is not a metadata exercise, it is visual analysis first, then reverse image search and Google dorking to confirm. The room's own first lesson puts it well: your first tool is your eyes.
