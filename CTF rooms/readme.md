@@ -1,8 +1,8 @@
 # CTF Rooms
 
-Capture-the-flag write-ups from TryHackMe. I document the ones I find interesting or that taught me something, rather than every room I complete.
+Capture-the-flag write-ups from TryHackMe. I document the ones I find interesting or that taught me something, rather than every room I complete. Flags are not published.
 
 | Room | Difficulty | Key techniques |
 | ---- | ---------- | -------------- |
-| [Searchlight - IMINT](./searchlight-imint.md) | Easy | IMINT/GEOINT: image geolocation, reverse image search, Google dorking, video frame analysis |
-| [Chocolate Factory](./Chocolate%20Factory.md) | Easy | Web foothold, reverse shell, world-readable SSH key, sudo/GTFOBins (vi) privilege escalation, steghide, hashcat |
+| [Searchlight - IMINT](./01-Searchlight%20IMINT.md) | Easy | IMINT/GEOINT: image geolocation, reverse image search, Google dorking, video frame analysis |
+| [Chocolate Factory](./02-Chocolate%20Factory.md) | Easy | Web foothold, reverse shell, world-readable SSH key, sudo/GTFOBins (vi) privilege escalation, steghide, hashcat |
