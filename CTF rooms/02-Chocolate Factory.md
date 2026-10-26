@@ -1,5 +1,11 @@
 # Chocolate Factory
 
+**TryHackMe Room:** [Chocolate Factory](https://tryhackme.com/room/chocolatefactory)
+
+This write-up covers how I approached the room, step by step. Flags and specific key and password values are not included.
+
+## Introduction
+
 A beginner-friendly TryHackMe room. The goal is to get a foothold on the machine, find the user flag, and escalate to root. I solved it over two days, because my first attempt ran into a few problems, and I have written it up the way it actually happened.
 
 Flags and the specific key and password values are not included.
