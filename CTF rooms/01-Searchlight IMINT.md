@@ -2,7 +2,7 @@
 
 > **TryHackMe Room:** [Searchlight OSINT](https://tryhackme.com/room/searchlightosint)
 
-This write-up covers how I approached the room, step by step. Flags and specific key and password values are not included.
+This write-up covers how I approached the room, step by step. People phone numbers, emails, etc are not included.
 
 ## Introduction
 
