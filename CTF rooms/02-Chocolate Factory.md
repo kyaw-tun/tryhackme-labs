@@ -1,7 +1,6 @@
 # Chocolate Factory
 
 > **TryHackMe Room:** [Chocolate Factory](https://tryhackme.com/room/chocolatefactory)
-> 
 
 This write-up covers how I approached the room, step by step. Flags and specific key and password values are not included.
 
