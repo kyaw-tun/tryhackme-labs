@@ -41,7 +41,7 @@ if(isset($_GET["view"])){
 
 The rule is: the path must not contain `../..`, and it must contain `/var/www/html/development_testing`. So I needed a traversal that reaches other files while avoiding the literal string `../..` and still including the allowed directory. Variations such as `.././../` and `..//..//` get around the `../..` check while still resolving to a traversal on the filesystem.
 
-### From LFI to a shell (log poisoning)
+## From LFI to a shell (log poisoning)
 
 Since test.php uses include rather than readfile, this LFI can be pushed from reading files to executing code, through log poisoning. The idea: the Apache access log records the User-Agent of each request, so if I send a request whose User-Agent contains PHP code, that code is written into the log. Then, by including the log file through the LFI, the code gets executed.
 
