@@ -59,7 +59,7 @@ Then I included the access log through the LFI (as a plain include, not through 
 
 With the payload in place, adding `&cmd=` to the URL ran commands as `www-data`. It sometimes took a couple of refreshes to take effect.
 
-From there I used a reverse shell to get an interactive session. I tried more than one form of the reverse-shell command; the one that worked wrapped it in `bash -c '...'`. [To confirm: the exact reason the other form failed — I will verify this.] I caught the shell with a `netcat` listener and landed as `www-data`, then read the flag.
+From there I used a reverse shell to get an interactive session. I tried more than one form of the reverse-shell command; the one that worked wrapped it in `bash -c '...'`.I am still working out exactly why the other form failed, and will update this once I am sure. I caught the shell with a `netcat` listener and landed as `www-data`, then read the flag.
 
 ## Privilege escalation to archangel (cron + writable script)
 
