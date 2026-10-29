@@ -1,6 +1,6 @@
 # Archangel
 
-> **TryHackMe Room**: [Red](https://tryhackme.com/room/archangel)
+> **TryHackMe Room**: [Archangel](https://tryhackme.com/room/archangel)
 
 This write-up covers how I approached the room, step by step. Flags are not included.
 
