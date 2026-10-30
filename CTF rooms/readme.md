@@ -8,3 +8,4 @@ Capture-the-flag write-ups from TryHackMe. I document the ones I find interestin
 | [Chocolate Factory](./02-Chocolate%20Factory.md) | Easy | Web foothold, reverse shell, world-readable SSH key, sudo/GTFOBins (vi) privilege escalation, steghide, hashcat |
 | [Red (redisl33t)](./03-Red.md) | Easy | LFI filter bypass (readfile, string-replace collapse), hashcat rule-based wordlist, Hydra SSH, /etc/hosts hijack for reverse shell, PwnKit (CVE-2021-4034) |
 | [Archangel](./04-Archangel.md) | Easy | Virtual host enumeration, filtered LFI with php://filter, log poisoning to RCE, writable cron script, SUID PATH hijacking |
+| [Dogcat](./05-Dogcat.md) | Medium | LFI filter bypass (dog/cat string check, ext= override), php://filter source read, log poisoning to RCE, sudo env (GTFOBins) root, Docker container escape via writable backup script |
