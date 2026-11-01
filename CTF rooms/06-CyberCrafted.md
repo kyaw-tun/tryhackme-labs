@@ -79,7 +79,7 @@ Impact: a sudo rule allowing `screen` to attach to a root-owned session permitte
 - Credential storage: never store plaintext passwords in logs (`log.txt`); hash passwords and keep secrets out of world- or group-readable application files.
 - SSH private key: restrict key file permissions to the owner and avoid leaving crackable keys where other users can read them.
 - Sudo `screen` rule: this grants effective root; remove it or replace it with a tightly constrained, non-interactive command. Interactive programs like `screen`, `vi`, and `less` should generally never be allowed through sudo.
-- Virtual hosts: restrict or monitor access to `admin` and store `subdomains`; the `store` SQLi was reachable pre-authentication.
+- Virtual hosts: restrict or monitor access to `admin` and `store` subdomains; the `store` SQLi was reachable pre-authentication.
 
 ## 9. Notes and takeaways
 
