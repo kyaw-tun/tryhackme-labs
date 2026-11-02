@@ -10,3 +10,7 @@ Capture-the-flag write-ups from TryHackMe. I document the ones I find interestin
 | [Archangel](./04-Archangel.md) | Easy | Virtual host enumeration, filtered LFI with php://filter, log poisoning to RCE, writable cron script, SUID PATH hijacking |
 | [Dogcat](./05-Dogcat.md) | Medium | LFI filter bypass (dog/cat string check, ext= override), php://filter source read, log poisoning to RCE, sudo env (GTFOBins) root, Docker container escape via writable backup script |
 | [CyberCrafted](./06-CyberCrafted.md) | Medium | Subdomain enumeration (ffuf), SQL injection (sqlmap), hash cracking, web command execution to reverse shell, readable SSH key, plaintext creds in logs, sudo screen privilege escalation |
+
+## Concept write-ups
+
+- [Local File Inclusion](./concepts/local-file-inclusion.md) — an explanation of LFI techniques (filter bypass, php://filter, log poisoning) drawn from the Red, Archangel, and Dogcat rooms above.
