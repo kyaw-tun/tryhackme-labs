@@ -6,7 +6,9 @@ Local File Inclusion (LFI) occurs when a web application includes a file from th
 
 LFI is not caused by "including files". Every app includes files. It is caused by letting user input decide which file gets included, without validation. Frameworks like Laravel include files safely by resolving names internally; the vulnerability appears only when a developer puts user-controlled input into a file-loading function.
 
-The sections below walk through the main LFI techniques in three phases, using rooms I worked through on TryHackMe as examples. The three rooms are Red, Archangel, and Dogcat, each written up separately in this repository.
+The sections below walk through the main LFI techniques in three phases, using rooms I worked through on TryHackMe as examples. 
+
+> The three rooms are [Red](./03-Red.md), [Archangel](./04-Archangel.md), and [Dogcat](./05-Dogcat.md), each written up separately in this repository.
 
 ## Phase 1: Bypassing Filters & Reading Source Code (The PHP Filter Trick)
 
