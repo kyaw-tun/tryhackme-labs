@@ -4,7 +4,7 @@ This is like a list of techniques where you can do privilege escalation to root 
 
 ## Introduction
 
-What is Linux Privilege Escalation? It is when a user from lower permission account to a higher permission one, usually root. And it is also an exploitation of a vulnerability or a flaw to gain access to the files or other resources that are usually restricted to the users.
+What is Linux Privilege Escalation? It is when a user moves from a lower-permission account to a higher-permission one, usually root, by exploiting a vulnerability, misconfiguration, or flaw to gain access to files or resources normally restricted to them.
 
 ## Enumeration
 
