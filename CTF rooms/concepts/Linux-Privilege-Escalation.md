@@ -1,6 +1,6 @@
 # Linux Privilege Escalation (To Do)
 
-This is a list of techniques where you can do privilege escalation to root (or higher privilege user) in the Linux systems. These techniques are mainly from the rooms: [Linux Privilege Escalation](https://tryhackme.com/room/linprivesc) and [Linux PrivEsc](https://tryhackme.com/room/linuxprivesc). But I will keep adding techniques from other rooms as well. The ones worth noting or unusual ones.
+This is a list of techniques for privilege escalation to root (or a higher-privileged user) on Linux systems.. These techniques are mainly from the rooms: [Linux Privilege Escalation](https://tryhackme.com/room/linprivesc) and [Linux PrivEsc](https://tryhackme.com/room/linuxprivesc). But I will keep adding techniques from other rooms as well. The ones worth noting or unusual ones.
 
 ## Introduction
 
