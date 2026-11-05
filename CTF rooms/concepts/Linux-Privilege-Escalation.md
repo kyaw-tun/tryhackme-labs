@@ -35,7 +35,7 @@ These are the basic commands you should know, and know how to use them. But if y
 - [Linux Smart Enumeration](https://github.com/diego-treitos/linux-smart-enumeration)
 - [Linux Priv Checker](https://github.com/linted/linuxprivchecker)
 
-I have used `LinPeas` and `LinEnum`. The need for the usage of other ones has not come up yet.For a fuller walkthrough of enumeration, see my [enumeration write-up](../../02-Jr%20Penetration%20Tester/04-Linux%20Privilege%20Escalation: Enumeration.md).
+I have used `LinPeas` and `LinEnum`. The need for the usage of other ones has not come up yet.For a fuller walkthrough of enumeration, see my [enumeration write-up](../../02-Jr%20Penetration%20Tester/04-Linux%20Privilege%20Escalation%3A%20Enumeration.md).
 
 ## Kernel Exploits
 
