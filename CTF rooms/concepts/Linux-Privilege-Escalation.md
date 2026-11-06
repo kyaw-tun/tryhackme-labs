@@ -1,4 +1,4 @@
-# Linux Privilege Escalation (To Do)
+# Linux Privilege Escalation (Ongoing)
 
 This is a list of techniques for privilege escalation to root (or a higher-privileged user) on Linux systems.. These techniques are mainly from the rooms: [Linux Privilege Escalation](https://tryhackme.com/room/linprivesc) and [Linux PrivEsc](https://tryhackme.com/room/linuxprivesc). But I will keep adding techniques from other rooms as well. The ones worth noting or unusual ones.
 
@@ -78,3 +78,4 @@ And when you find unusual binary that are SUID set, you can check out ways to ge
 ## Network File Sharing (NFS)
 
 ## ...
+> *This write-up is in progress; more techniques are being added.
