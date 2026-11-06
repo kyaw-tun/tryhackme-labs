@@ -39,9 +39,35 @@ I have used `LinPeas` and `LinEnum`. The need for the usage of other ones has no
 
 ## Kernel Exploits
 
+This method should be the last thing on a pentester's mind when escalating privileges. Because, even if it does work or it doesn't, it can crash or destabilize the system. 
+
+Kernel exploits mean exactly what it's written, exploiting the Linux kernel. More often or not, Linux server machines run outdated Linux systems (at least in CTFs). And those outdated kernels would have vulnerabilities and exploits ready that can be found online.
+
+For this task, the lab machine was running `Ubuntu 14.04 LTS` with Kernel version `3.13.0-24-generic`, and in the previous task (which i didn't explain), we were asked to find a `CVE` vulnerability code name for that specific kernel, and now, we are asked to gain root, using the exploit found online.
+
+It can be pretty easy, if you know what you are looking. First place to look for is almost always "exploit-db" site. For me, I first looked at the wrong one there, and I saw "Metasploit required", so, i checked Metasploit and looked for the listing there. It might have been definitely possible, but number of payloads I saw there overwhelmed me for a bit, and I tried to look for another one on "exploit-db". And I found one `.c` code there. 
+
+How it works is, first you download/copy the `.c` code, and save it, and compile it using `gcc` and then run the binary using `./ofs`. And that's how I gained root.  
+
 ## Sudo
 
+This is almost always the first thing you check when you get initial access to a system. Sometimes, you would see a road block like asking password for the system when you don't know one. But sometimes, you get the initial access through a weak password, and when running `sudo -l`, you might find that the user has `sudo` privileges if not all.
+
+For this task, the teaching and the task questions don't match. The teaching explains about how to get root using `LD_PRELOAD` (which I'll get to in the future), but the questions are about `sudo` permissions that the machine user is allowed to run and about how to get to root using `nmap`. When I first do this room, I might have been really confused (and no wonder, it took me two to three days back then). Now, I know what `LD_PRELOAD` is (although, my knowledge still needs to be put on test), and I know how to get to root using `nmap` (for some versions only) and the easiest part, the programs the user of the machine can run `sudo` on.
+
+And one of the questions of this task also ask the hash of one user's password. It is easy enough too.
+
 ## SUID
+
+`SUID` (Set User ID) and `SGID` (Set Group ID) are special Linux/Unix file permissions that allow an executable program to run with the privileges of its owner or group rather than the user running it.
+
+I only found out about `SUID` when doing Red Team Capstone or when learning about Red Team Essentials. Now, I have used it to get to root in multiple occasions. And I still have yet to encounter any privilege escalation using `SGID`. You just cannot `sudo -l` the SUID or SGID like you can with `sudo`. You have to enumerate it manually or with automated tools. Here is one useful way using `find`:
+
+```bash
+find / -type f -perm -04000 -ls 2>/dev/null
+```
+
+And when you find unusual binary that are SUID set, you can check out ways to get to root using GTFObins, it might be file read, or write, or even getting shell, it depends on the binary. 
 
 ## Linux Capabilities
 
