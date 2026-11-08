@@ -13,5 +13,5 @@ Capture-the-flag write-ups from TryHackMe. I document the ones I find interestin
 
 ## Concept write-ups
 
-- [Local File Inclusion](./concepts/local-file-inclusion.md) — an explanation of LFI techniques (filter bypass, php://filter, log poisoning) drawn from the Red, Archangel, and Dogcat rooms above.
-- [Linux Privilege Escalation](./concepts/linux-privilege-escalation.md) — eight privilege-escalation techniques (kernel exploits, sudo, SUID, capabilities, cron, PATH, NFS) with worked examples.
+- [Local File Inclusion](./concepts-and-notes/Local-File-Inclusion.md) — an explanation of LFI techniques (filter bypass, php://filter, log poisoning) drawn from the Red, Archangel, and Dogcat rooms above.
+- [Linux Privilege Escalation](./concepts-and-notes/Linux-Privilege-Escalation.md) — eight privilege-escalation techniques (kernel exploits, sudo, SUID, capabilities, cron, PATH, NFS) with worked examples.
