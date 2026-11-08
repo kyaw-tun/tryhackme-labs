@@ -31,7 +31,7 @@ Enumeration is important in privilege escalation, because it tells us what we ar
 
 These are the basic commands worth knowing, along with how to use them. If you find them time-consuming, there are automated ways to enumerate the system. The popular ones are:
 
-- [LinPeas](https://github.com/carlospolop/privilege-escalation-awesome-scripts-suite/tree/master/linPEAS)
+- [LinPEAS](https://github.com/carlospolop/privilege-escalation-awesome-scripts-suite/tree/master/linPEAS)
 - [LinEnum](https://github.com/rebootuser/LinEnum)
 - [LES (Linux Exploit Suggester)](https://github.com/mzet-/linux-exploit-suggester)
 - [Linux Smart Enumeration](https://github.com/diego-treitos/linux-smart-enumeration)
