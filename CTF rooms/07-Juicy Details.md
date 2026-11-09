@@ -23,7 +23,7 @@ A few things I worked through here:
 
 Toward the end of access.log, the later requests were shorter and unencoded, making the final stages easier to read. From these I could see the attacker move from testing the SQL injection to actually pulling user data from the vulnerable endpoint, and then attempting to retrieve files from another endpoint.
 
-### Credential access and exfiltration (vsftpd.log` and `auth.log)
+### Credential access and exfiltration (vsftpd.log and auth.log)
 
 Cross-referencing the other two logs filled in the rest:
 - `vsftpd.log` showed the FTP service being used, including the account it authenticated as, to retrieve files.
