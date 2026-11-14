@@ -16,4 +16,4 @@ Capture-the-flag write-ups from TryHackMe. I document the ones I find interestin
 
 - [Local File Inclusion](./concepts-and-notes/Local-File-Inclusion.md) — an explanation of LFI techniques (filter bypass, php://filter, log poisoning) drawn from the Red, Archangel, and Dogcat rooms above.
 - [Linux Privilege Escalation](./concepts-and-notes/Linux-Privilege-Escalation.md) — eight privilege-escalation techniques (kernel exploits, sudo, SUID, capabilities, cron, PATH, NFS) with worked examples.
-- [Wifi-Hacking-101](./concepts-and-notes/Wifi-Hacking-101.md) — a practical showdown of how Wi-Fi hacking works on basic level using tools from aircrack-ng suite
+- [Wifi-Hacking-101](./concepts-and-notes/Wifi-Hacking-101.md) — WPA2 handshake capture and cracking on my own network (monitor mode, airodump-ng, deauthentication, aircrack-ng/hashcat), based on the TryHackMe [Wifi Hacking 101](https://tryhackme.com/room/wifihacking101) and [Wifi Fundamentals and Recon](https://tryhackme.com/room/wififundamentalsandrecon) rooms.
