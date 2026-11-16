@@ -4,3 +4,4 @@ Write-ups from TryHackMe's Hacker Holidays Challenge (Byte Lotus), which I compl
 
 | Challenge | Topic | Key techniques |
 | --------- | ----- | -------------- |
+| [Room 404](./01-Room%20404.md) | Web, exposed version control data | Directory enumeration with `gobuster`, manual analysis of exposed repository objects with `python3` |
