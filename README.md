@@ -14,11 +14,11 @@ The repository is organized by learning path and area rather than by completion 
 | --- | --- | ------ |
 | [SOC Level 1](./01-SOC%20Level%201/) | Selected rooms covering security operations and defensive security | Completed |
 | [Jr Penetration Tester](./02-Jr%20Penetration%20Tester/) | Selected rooms covering penetration-testing concepts and techniques | Completed |
-| [CTF Rooms](./CTF%20rooms) | Selected CTF-style rooms and challenges | In progress |
-| Hacker Holidays Challenge | Selected exercises from the Hacker Holidays challenges | In progress |
+| [CTF Rooms](./CTF%20rooms) | Selected CTF-style rooms and challenges | Completed |
+| [Hacker Holidays Challenge](./Hacker%20Holidays%20Challenge) | Selected exercises from the Hacker Holidays challenges | In-progress |
 | Tools | Selected rooms focused on security tools and their practical use | In progress |
 
-*Last updated: October 2026. More write-ups in progress.*
+*Last updated: November 2026. More write-ups in progress.*
 
 ## What I Document
 
