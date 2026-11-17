@@ -39,7 +39,7 @@ aws sts get-caller-identity
 It returned the unique account and identity tied to the guest credentials, so I knew they were valid and could start testing what they had access to in the database table. I could not run `describe` on the table, as it returned a "permission denied" error, but I could run `scan`:
 
 ```bash
-aws dynamodb scan --table-name complimentary-GuestWellnessProfiles --region us-east-1
+aws dynamodb scan --table-name <table_name> --region <region_name>
 ```
 
 The output listed usernames, passwords, full names, notes, and other fields in `json` format in the terminal, and the flag was in there.
