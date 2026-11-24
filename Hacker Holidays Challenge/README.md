@@ -9,5 +9,6 @@ Write-ups from TryHackMe's Hacker Holidays Challenge (Byte Lotus), which I compl
 | [Beach Bar](03-Beach%20Bar.md) | Web exploitation and privilege escalation | Source code review, unsafe YAML deserialization for RCE, reverse shell, service enumeration with `systemctl` |
 | [Do Not Disturb](04-Do%20Not%20Disturb.md) | Web, NoSQL injection and server-side template injection | NoSQL injection auth bypass, cookie reuse, SSTI (EJS) to RCE, Node.js inspector (`node inspect`) lateral movement, privilege escalation via `disk` group and `/etc/shadow` cracking |
 | [CryptoCabana](05-CryptoCabana.md) | Cloud security (Azure) | Azure Storage container/blob enumeration, hardcoded credential discovery, Key Vault secret access, secret version history recovery |
+| [The Hollow Shell](06-The%20Hollow%20Shell.md) | Web, zip-slip (path traversal via archive extraction) | Page source review for hardcoded credentials, zip-slip proof-of-concept scripting, reverse shell via malicious archive upload |
 
 *More write-ups in progress.*
