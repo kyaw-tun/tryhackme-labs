@@ -2,7 +2,7 @@
 
 > **TryHackMe Room:** [After Hours](https://tryhackme.com/room/hh-afterhours-b090d1f0)
 
-This write-up covers how I approached the room, step by step.
+This write-up covers how I approached the room, step by step. Flags and specific key and password values are not included.
 
 ## Introduction
 
@@ -53,7 +53,7 @@ I then searched for "Win32_HardwareTelemetry," "ConfigData," and "string," which
 
 ```txt
 ....
-<Module>updates.exeProgramAfterHoursmscorlibSystemObjectMain.ctorSystem.Runtime.CompilerServicesCompilationRelaxationsAttributeRuntimeCompatibilityAttributeupdatesEnvironmentget_MachineNameStringStringComparisonEqualsSystem.DiagnosticsProcessStartInfoset_FileNameset_ArgumentsProcessWindowStyleset_WindowStyleset_CreateNoWindowProcessStartConsoleWriteLinebytelotusdccmd.exe/c net user patch VEhNe1A0dGNoX29wM25lZF90aDNfQmFjS2QwMHJ9 /addOExecution halted: Environment mismatch
+<Module>updates.exeProgramAfterHoursmscorlibSystemObjectMain.ctorSystem.Runtime.CompilerServicesCompilationRelaxationsAttributeRuntimeCompatibilityAttributeupdatesEnvironmentget_MachineNameStringStringComparisonEqualsSystem.DiagnosticsProcessStartInfoset_FileNameset_ArgumentsProcessWindowStyleset_WindowStyleset_CreateNoWindowProcessStartConsoleWriteLinebytelotusdccmd.exe/c net user patch <ENCODED_FLAG> /addOExecution halted: Environment mismatch
 ....
 ```
 
