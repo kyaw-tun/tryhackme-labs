@@ -11,5 +11,6 @@ Write-ups from TryHackMe's Hacker Holidays Challenge (Byte Lotus), which I compl
 | [CryptoCabana](05-CryptoCabana.md) | Cloud security (Azure) | Azure Storage container/blob enumeration, hardcoded credential discovery, Key Vault secret access, secret version history recovery |
 | [The Hollow Shell](06-The%20Hollow%20Shell.md) | Web, zip-slip (path traversal via archive extraction) | Page source review for hardcoded credentials, zip-slip proof-of-concept scripting, reverse shell via malicious archive upload |
 | [After Hours](07-After%20Hours.md) | Forensics, Windows persistence and reverse engineering | WMI event consumer analysis, strings extraction from forensic artifact files, base64/Deflate decoding, PE binary inspection via hex dump |
+| [Infinity Pool](08-Infinity%20Pool.md) | Web, Linux boot2root, OS command injection | Ping-based command injection for initial access, internal service enumeration, SSH port forwarding, default FreePBX credentials, OS command injection via unsanitized `tar` parameter |
 
 *More write-ups in progress.*
