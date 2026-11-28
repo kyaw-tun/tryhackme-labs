@@ -16,7 +16,7 @@ The repository is organized by learning path and area rather than by completion 
 | [Jr Penetration Tester](./02-Jr%20Penetration%20Tester/) | Selected rooms covering penetration-testing concepts and techniques | Completed |
 | [CTF Rooms](./CTF%20rooms) | Selected CTF-style rooms and challenges | Completed |
 | [Hacker Holidays Challenge](./Hacker%20Holidays%20Challenge) | Selected exercises from the Hacker Holidays challenges | Completed |
-| Tools | Selected rooms focused on security tools and their practical use | In progress |
+| [Tools](./Tools) | Selected rooms focused on security tools and their practical use | In progress |
 
 *Last updated: November 2026. More write-ups in progress.*
 
